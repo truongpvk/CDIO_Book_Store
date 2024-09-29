@@ -1,0 +1,46 @@
+.event-list > li span {
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-list > li {
+    position: relative;
+    overflow: hidden;
+}
+
+.event-list > li:hover span {
+    transform: translateY(-3px);
+}
+
+input[type="range"] {
+    min-width: 70px;
+}
+
+.filter-items > select {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.price-range > input {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.book-grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Tạo 5 cột với chiều rộng bằng nhau */
+    grid-template-rows: repeat(5, auto); /* Tạo 5 dòng với chiều cao 100px */
+    gap: 15px; /* Khoảng cách giữa các ô */
+    width: 100%; /* Đảm bảo grid chiếm toàn bộ chiều rộng */
+}
+
+.limited-text {
+    display: -webkit-box; /* Sử dụng hộp flexbox */
+    -webkit-box-orient: vertical; /* Định hướng dọc cho hộp */
+    -webkit-line-clamp: 1; /* Giới hạn số dòng hiển thị (1 dòng) */
+    overflow: hidden; /* Ẩn phần văn bản vượt quá */
+    text-overflow: ellipsis; /* Thêm dấu ba chấm (...) */
+    white-space: normal; /* Cho phép ngắt dòng */
+}

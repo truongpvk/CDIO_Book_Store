@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/css/homepage.css">
+    <style>
+        .category-drop{
+            display: none;
+        }
+
+        .category-list:hover .category-drop {
+            display: block;
+        }
+        
+        .category-drop > li {
+            padding: 16px;
+        }
+
+        .category-drop > li:hover {
+            background-color: rgb(231, 225, 225);
+        }
+
+        .redirect-list > li:nth-child(n + 2):hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="bg-white font-sans text-sm max-h-max">
+    <style>
+        .form-container input {
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .form-post > div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-post > div * {
+            margin-top: 5px;
+        }
+
+        .form-active-btn {
+            padding: 8px 20px;
+            border: 1px solid gray;
+            color: rgb(255, 241, 241);
+            background-color: rgb(55, 55, 235);
+            border-radius: 20px;
+        }
+
+        .form-active-btn:active {
+            background-color: rgb(0, 0, 134);
+        }
+
+        .form-container-x {
+            display: none;
+            background-color: rgb(0, 0, 0, 0.5);
+        }
+
+    </style>
+    <!-- Login Form -->
+    <div class="form-container-x login-form-container-x fixed w-full h-full z-50 flex justify-center items-center">
+        <div class="form-container border bg-white border-gray-200 p-8 shadow-lg rounded-lg relative" style="min-width: 25%;">
+            <div class="close-btn absolute" style="right: 15px; top: 15px; font-size: 25px;">
+                <button class="close-btn-x"><i class="bi bi-x-circle"></i></button>
+            </div>
+            <form action="" class="login-form flex flex-col space-y-5">
+                <h1 style="font-size: 20px;"><b>Đăng nhập</b></h1>
+                <div class="form-post flex flex-col space-y-5">Code language not supported or defined.
+                    <div class="username-post">
+                        <label for="username">Tên đăng nhập</label>
+                        <input type="text" name="username" id="username">
+                    </div>
+                    
+                    <div class="password-post">
+                        <div class="password-x flex justify-between">
+                            <label for="password">Mật khẩu</label>
+                            <button class="forgot-password-x" style="font-size: small; font-weight: lighter;">Quên mật khẩu?</button>
+                        </div>
+                        <input type="password" name="password" id="password">
+                    </div>
+                </div>
+                <div class="action-button flex justify-between items-center">
+                    <button class="signup-redirect" style="font-size: small; font-weight: lighter;">Chưa có tài khoản?</button>
+                    <button class="login-btn form-active-btn">Đăng nhập</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Signup Form -->
+    <div class="form-container-x signup-form-container-x fixed w-full h-full z-50 flex justify-center items-center" >
+        <div class="form-container border bg-white border-gray-200 p-8 shadow-lg rounded-lg relative" style="min-width: 25%;">
+            <div class="close-btn absolute" style="right: 15px; top: 15px; font-size: 25px;">
+                <button class="close-btn-x"><i class="bi bi-x-circle"></i></button>
+            </div>
+            <form action="" class="signup-form flex flex-col space-y-5">
+                <h1 style="font-size: 20px;"><b>Đăng ký</b></h1>
+                <div class="form-post flex flex-col space-y-5">
+                    <div class="username-post">
+                        <label for="username">Tên đăng nhập</label>
+                        <input type="text" name="username" id="username">
+                    </div>
+                    
+                    <div class="email-post">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email">
+                    </div>
+
+                    <div class="password-post">
+                        <label for="password">Mật khẩu</label>
+                        <input type="password" name="password" id="password">
+                    </div>
+
+                    <div class="repassword-post">
+                        <label for="repassword">Nhập lại mật khẩu</label>
+                        <input type="password" name="repassword" id="repassword">
+                    </div>
+                </div>
+                <div class="action-button flex justify-between items-center">
+                    <button class="login-redirect" style="font-size: small; font-weight: lighter;">Đã có tài khoản?</button>
+                    <button class="signup-btn form-active-btn">Đăng ký</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Nav Bar -->
+    <nav class="navigation-bar bg-white p-6 px-10 w-full border border-b-2 border-gray">
+        <div class="navigation-items flex items-center justify-between">
+            <div class="category-list relative">
+                <a href="#"><b>TRANG CHỦ</b></a>
+            </div>
+            <div class="search-and-redirect flex justify-between items-center gap-x-10 z-0">
+                <div class="search-bar flex items-center relative">
+                    <input 
+                    type="text" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    placeholder="Tìm kiếm"
+                    style="min-width: 400px;"
+                    >
+                    <i class="bi bi-search absolute right-4"></i>
+                </div>
+                <div class="redirect-bar">
+                    <ul class="redirect-list flex justify-between gap-x-10 items-center">
+                        <li>
+                            <!-- Giỏ hàng -->
+                            <a href="#"><i class="bi bi-cart" style="font-size: 20px;"></i></a>
+                        </li>
+                        <li>
+                            <a href="#">THÔNG BÁO</a>
+                        </li>
+                        <li>
+                            <a href="#">NGÔN NGỮ</a>
+                        </li>
+                        <li>
+                            <a href="#">KÊNH NGƯỜI BÁN</a>
+                        </li>
+                        <li>
+                            <a href="#">HỖ TRỢ</a>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+            <div class="login-and-register flex justify-between items-center space-x-5">
+                <div class="login-button p-3 rounded-full border border-black" style="cursor: pointer;">
+                    <a href="#" class="login-button-submit"><button>Đăng nhập</button></a>
+                </div>
+                <div class="register-button py-3 px-5 rounded-full bg-black text-white" style="cursor: pointer;">
+                    <a href="#" class="register-buttion-submit"><button>Đăng ký</button></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <script>
+        const login_button = document.getElementsByClassName("login-button")[0];
+        const signup_button = document.getElementsByClassName("register-button")[0];
+        const login_form = document.getElementsByClassName("login-form-container-x")[0];
+        const signup_form = document.getElementsByClassName("signup-form-container-x")[0];
+        const close_button = document.getElementsByClassName("close-btn-x");
+
+        login_button.addEventListener("click", function(){
+            login_form.style.display = "flex";
+        });
+
+        signup_button.addEventListener("click", function(){
+            signup_form.style.display = "flex";
+        });
+
+        close_button[0].addEventListener("click", function() {
+            login_form.style.display = "none";
+        });
+        close_button[1].addEventListener("click", function() {
+            signup_form.style.display = "none";
+        });
+    </script>
+
+    <!-- Event Bar -->
+    <nav class="event-bar bg-white px-10 w-full border border-b-2 border-gray">
+        <ul class="event-list flex py-5 justify-between items-center px-8">
+            <li class="flex justify-between items-center space-x-3">
+                <a href="#"><span>Sản phẩm Freeship</span></a>
+                <i class="bi bi-truck" style="font-size: 25px;"></i>
+            </li>
+            <li class="flex justify-between items-center space-x-3">
+                <a href="#"><span>Top Review</span></a>
+            </li>
+            <li class="flex justify-between items-center space-x-3">
+                <a href="#"><span>Top bán chạy</span></a>
+            </li>
+            <li class="flex justify-between items-center space-x-3">
+                <a href="#"><span>Săn Voucher</span></a>
+                <i class="bi bi-ticket-perforated" style="font-size: 25px;"></i>
+            </li>
+            <li class="flex justify-between items-center space-x-3">
+                <a href="#"><span>Đồng giá 29k</span></a>
+                <i class="bi bi-journal-text" style="font-size: 25px;"></i>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="p-8 w-full shadow-lg">
+        <article class="flex justify-between space-x-8 text-md p-5">
+            <form class="filter-bar border-r border-r-gray-200 space-y-5 px-5 py-6" style="max-width: 300px;">
+                <h1 style="font-size: 20px;"><b>Bộ lọc tìm kiếm</b></h1>
+                <div class="filter-items filter-price flex flex-col">
+                    <label for="price-range">Giá (VNĐ):</label>
+                    <div class="price-range space-y-2 flex flex-col items-center">
+                        <input type="text" name="min-price" id="min-price" placeholder="Giá thấp nhất">
+                        <input type="text" name="max-price" id="max-price" placeholder="Giá cao nhất">
+                    </div>
+                </div>
+                <div class="filter-items filter-category flex flex-col">
+                    <label for="filter-category">Thể loại:</label>
+                    <select name="category" id="category" style="min-width: 70px;">
+                        <option value="all">Tất cả</option>
+                        <option value="#">Sách nước ngoài</option>
+                        <option value="#">Sách trong nước</option>
+                        <option value="#">Sách giáo khoa</option>
+                        <option value="#">Truyện tranh</option>
+                    </select>
+                </div>
+                <div class="filter-items filter-author flex flex-col">
+                    <label for="filter-author">Tác giả:</label>
+                    <select name="author" id="author" style="min-width: 70px;">
+                        <option value="all">Tất cả</option>
+                        <option value="#">A</option>
+                        <option value="#">B</option>
+                        <option value="#">C</option>
+                        <option value="#">D</option>
+                    </select>
+                </div>
+
+                <div class="filter-items filter-review flex flex-col">
+                    <label for="filter-review" class="filter-review pb-3" style="font-size: 15px;">Đánh giá:</label>
+                    <label>
+                        <input type="radio" name="review" id="review" value="five-star">
+                        5 sao
+                    </label>
+
+                    <label>
+                        <input type="radio" name="review" id="review" value="greater-four-star">
+                        4 sao trở lên
+                    </label>
+                    <label>
+                        <input type="radio" name="review" id="review" value="greater-three-star">
+                        3 sao trở lên
+                    </label>
+                </div>
+                <div class="filter-button flex justify-between items-center">
+                    <button class="bg-blue-600 text-white text-primary-foreground hover:bg-blue-800 rounded-lg px-4 py-2 mr-2">Lọc</button>
+                    <button class="rounded-lg px-4 py-2 mr-2 hover:bg-gray-100">Xóa bộ lọc</button>
+                </div>
+
+            </form>
+            <div class="book-and-sort space-y-10 px-5 py-4">
+                <div class="sort-option-box flex justify-between items-center">
+                    <span style="font-size: 20px;"><b>Sản phẩm đang bán</b></span>
+                    <select name="sort" id="sort-book" style="padding: 8px; border: 1px solid gray; border-radius: 10px;">
+                        <option value="price-ascending">Giá (từ thấp đến cao)</option>
+                        <option value="price-descending">Giá (từ cao đến thấp)</option>
+                        <option value="name-az">Tên sách (A - Z)</option>
+                        <option value="name-za">Tên sách (Z - A)</option>
+                    </select>
+                </div>
+                <div class="books-container" style="flex-grow: 4;">
+                    <div class="book-grid-container">
+                        <div class="books-item border border-gray-300 rounded-lg p-3 flex flex-col items-center">
+                            <a href="#">
+                                <img class="book-cover" src="../static/resources/toi_thay_hoa_vang.jpg" alt="Bìa sách" style="max-width: 140px;">
+                            </a>
+                            <div class="book-info flex flex-col" style="padding: 8px;">
+                                <a href="#">
+                                    <p class="book-name limited-text" style="font-size: 16px; font-weight: 500;">Tôi thấy hoa vàng trên cỏ xanh</p>
+                                </a>
+                                <span class="book-author" style="font-size: 10px; font-weight: 100;">Nguyễn Nhật Ánh</span>
+                                <span class="book-price" style="font-weight: 700; color: red;">13.000 đ</span>
+                                <span class="book-score">
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="books-item border border-gray-300 rounded-lg p-3 flex flex-col items-center">
+                            <a href="#">
+                                <img class="book-cover" src="../static/resources/toi_thay_hoa_vang.jpg" alt="Bìa sách" style="max-width: 140px;">
+                            </a>
+                            <div class="book-info flex flex-col" style="padding: 8px;">
+                                <a href="#">
+                                    <p class="book-name limited-text" style="font-size: 16px; font-weight: 500;">Tôi thấy hoa vàng trên cỏ xanh</p>
+                                </a>
+                                <span class="book-author" style="font-size: 10px; font-weight: 100;">Nguyễn Nhật Ánh</span>
+                                <span class="book-price" style="font-weight: 700; color: red;">13.000 đ</span>
+                                <span class="book-score">
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                </span>
+                            </div>
+                        </div> 
+                        <div class="books-item border border-gray-300 rounded-lg p-3 flex flex-col items-center">
+                            <a href="#">
+                                <img class="book-cover" src="../static/resources/toi_thay_hoa_vang.jpg" alt="Bìa sách" style="max-width: 140px;">
+                            </a>
+                            <div class="book-info flex flex-col" style="padding: 8px;">
+                                <a href="#">
+                                    <p class="book-name limited-text" style="font-size: 16px; font-weight: 500;">Tôi thấy hoa vàng trên cỏ xanh</p>
+                                </a>
+                                <span class="book-author" style="font-size: 10px; font-weight: 100;">Nguyễn Nhật Ánh</span>
+                                <span class="book-price" style="font-weight: 700; color: red;">13.000 đ</span>
+                                <span class="book-score">
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                </span>
+                            </div>
+                        </div> 
+                        <div class="books-item border border-gray-300 rounded-lg p-3 flex flex-col items-center">
+                            <a href="#">
+                                <img class="book-cover" src="../static/resources/toi_thay_hoa_vang.jpg" alt="Bìa sách" style="max-width: 140px;">
+                            </a>
+                            <div class="book-info flex flex-col" style="padding: 8px;">
+                                <a href="#">
+                                    <p class="book-name limited-text" style="font-size: 16px; font-weight: 500;">Tôi thấy hoa vàng trên cỏ xanh</p>
+                                </a>
+                                <span class="book-author" style="font-size: 10px; font-weight: 100;">Nguyễn Nhật Ánh</span>
+                                <span class="book-price" style="font-weight: 700; color: red;">13.000 đ</span>
+                                <span class="book-score">
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                </span>
+                            </div>
+                        </div> 
+                        <div class="books-item border border-gray-300 rounded-lg p-3 flex flex-col items-center">
+                            <a href="#">
+                                <img class="book-cover" src="../static/resources/toi_thay_hoa_vang.jpg" alt="Bìa sách" style="max-width: 140px;">
+                            </a>
+                            <div class="book-info flex flex-col" style="padding: 8px;">
+                                <a href="#">
+                                    <p class="book-name limited-text" style="font-size: 16px; font-weight: 500;">Tôi thấy hoa vàng trên cỏ xanh</p>
+                                </a>
+                                <span class="book-author" style="font-size: 10px; font-weight: 100;">Nguyễn Nhật Ánh</span>
+                                <span class="book-price" style="font-weight: 700; color: red;">13.000 đ</span>
+                                <span class="book-score">
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                </span>
+                            </div>
+                        </div> 
+                        <div class="books-item border border-gray-300 rounded-lg p-3 flex flex-col items-center">
+                            <a href="#">
+                                <img class="book-cover" src="../static/resources/toi_thay_hoa_vang.jpg" alt="Bìa sách" style="max-width: 140px;">
+                            </a>
+                            <div class="book-info flex flex-col" style="padding: 8px;">
+                                <a href="#">
+                                    <p class="book-name limited-text" style="font-size: 16px; font-weight: 500;">Tôi thấy hoa vàng trên cỏ xanh</p>
+                                </a>
+                                <span class="book-author" style="font-size: 10px; font-weight: 100;">Nguyễn Nhật Ánh</span>
+                                <span class="book-price" style="font-weight: 700; color: red;">13.000 đ</span>
+                                <span class="book-score">
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                </span>
+                            </div>
+                        </div> 
+                        <div class="books-item border border-gray-300 rounded-lg p-3 flex flex-col items-center">
+                            <a href="#">
+                                <img class="book-cover" src="../static/resources/toi_thay_hoa_vang.jpg" alt="Bìa sách" style="max-width: 140px;">
+                            </a>
+                            <div class="book-info flex flex-col" style="padding: 8px;">
+                                <a href="#">
+                                    <p class="book-name limited-text" style="font-size: 16px; font-weight: 500;">Tôi thấy hoa vàng trên cỏ xanh</p>
+                                </a>
+                                <span class="book-author" style="font-size: 10px; font-weight: 100;">Nguyễn Nhật Ánh</span>
+                                <span class="book-price" style="font-weight: 700; color: red;">13.000 đ</span>
+                                <span class="book-score">
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                </span>
+                            </div>
+                        </div> 
+                        <div class="books-item border border-gray-300 rounded-lg p-3 flex flex-col items-center">
+                            <a href="#">
+                                <img class="book-cover" src="../static/resources/toi_thay_hoa_vang.jpg" alt="Bìa sách" style="max-width: 140px;">
+                            </a>
+                            <div class="book-info flex flex-col" style="padding: 8px;">
+                                <a href="#">
+                                    <p class="book-name limited-text" style="font-size: 16px; font-weight: 500;">Tôi thấy hoa vàng trên cỏ xanh</p>
+                                </a>
+                                <span class="book-author" style="font-size: 10px; font-weight: 100;">Nguyễn Nhật Ánh</span>
+                                <span class="book-price" style="font-weight: 700; color: red;">13.000 đ</span>
+                                <span class="book-score">
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                </span>
+                            </div>
+                        </div> 
+                        <div class="books-item border border-gray-300 rounded-lg p-3 flex flex-col items-center">
+                            <a href="#">
+                                <img class="book-cover" src="../static/resources/toi_thay_hoa_vang.jpg" alt="Bìa sách" style="max-width: 140px;">
+                            </a>
+                            <div class="book-info flex flex-col" style="padding: 8px;">
+                                <a href="#">
+                                    <p class="book-name limited-text" style="font-size: 16px; font-weight: 500;">Tôi thấy hoa vàng trên cỏ xanh</p>
+                                </a>
+                                <span class="book-author" style="font-size: 10px; font-weight: 100;">Nguyễn Nhật Ánh</span>
+                                <span class="book-price" style="font-weight: 700; color: red;">13.000 đ</span>
+                                <span class="book-score">
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                </span>
+                            </div>
+                        </div> 
+                        <div class="books-item border border-gray-300 rounded-lg p-3 flex flex-col items-center">
+                            <a href="#">
+                                <img class="book-cover" src="../static/resources/toi_thay_hoa_vang.jpg" alt="Bìa sách" style="max-width: 140px;">
+                            </a>
+                            <div class="book-info flex flex-col" style="padding: 8px;">
+                                <a href="#">
+                                    <p class="book-name limited-text" style="font-size: 16px; font-weight: 500;">Tôi thấy hoa vàng trên cỏ xanh</p>
+                                </a>
+                                <span class="book-author" style="font-size: 10px; font-weight: 100;">Nguyễn Nhật Ánh</span>
+                                <span class="book-price" style="font-weight: 700; color: red;">13.000 đ</span>
+                                <span class="book-score">
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                </span>
+                            </div>
+                        </div> 
+                        <div class="books-item border border-gray-300 rounded-lg p-3 flex flex-col items-center">
+                            <a href="#">
+                                <img class="book-cover" src="../static/resources/toi_thay_hoa_vang.jpg" alt="Bìa sách" style="max-width: 140px;">
+                            </a>
+                            <div class="book-info flex flex-col" style="padding: 8px;">
+                                <a href="#">
+                                    <p class="book-name limited-text" style="font-size: 16px; font-weight: 500;">Tôi thấy hoa vàng trên cỏ xanh</p>
+                                </a>
+                                <span class="book-author" style="font-size: 10px; font-weight: 100;">Nguyễn Nhật Ánh</span>
+                                <span class="book-price" style="font-weight: 700; color: red;">13.000 đ</span>
+                                <span class="book-score">
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                </span>
+                            </div>
+                        </div> 
+                        <div class="books-item border border-gray-300 rounded-lg p-3 flex flex-col items-center">
+                            <a href="#">
+                                <img class="book-cover" src="../static/resources/toi_thay_hoa_vang.jpg" alt="Bìa sách" style="max-width: 140px;">
+                            </a>
+                            <div class="book-info flex flex-col" style="padding: 8px;">
+                                <a href="#">
+                                    <p class="book-name limited-text" style="font-size: 16px; font-weight: 500;">Tôi thấy hoa vàng trên cỏ xanh</p>
+                                </a>
+                                <span class="book-author" style="font-size: 10px; font-weight: 100;">Nguyễn Nhật Ánh</span>
+                                <span class="book-price" style="font-weight: 700; color: red;">13.000 đ</span>
+                                <span class="book-score">
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                </span>
+                            </div>
+                        </div> 
+                        <div class="books-item border border-gray-300 rounded-lg p-3 flex flex-col items-center">
+                            <a href="#">
+                                <img class="book-cover" src="../static/resources/toi_thay_hoa_vang.jpg" alt="Bìa sách" style="max-width: 140px;">
+                            </a>
+                            <div class="book-info flex flex-col" style="padding: 8px;">
+                                <a href="#">
+                                    <p class="book-name limited-text" style="font-size: 16px; font-weight: 500;">Tôi thấy hoa vàng trên cỏ xanh</p>
+                                </a>
+                                <span class="book-author" style="font-size: 10px; font-weight: 100;">Nguyễn Nhật Ánh</span>
+                                <span class="book-price" style="font-weight: 700; color: red;">13.000 đ</span>
+                                <span class="book-score">
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                </span>
+                            </div>
+                        </div> 
+                        <div class="books-item border border-gray-300 rounded-lg p-3 flex flex-col items-center">
+                            <a href="#">
+                                <img class="book-cover" src="../static/resources/toi_thay_hoa_vang.jpg" alt="Bìa sách" style="max-width: 140px;">
+                            </a>
+                            <div class="book-info flex flex-col" style="padding: 8px;">
+                                <a href="#">
+                                    <p class="book-name limited-text" style="font-size: 16px; font-weight: 500;">Tôi thấy hoa vàng trên cỏ xanh</p>
+                                </a>
+                                <span class="book-author" style="font-size: 10px; font-weight: 100;">Nguyễn Nhật Ánh</span>
+                                <span class="book-price" style="font-weight: 700; color: red;">13.000 đ</span>
+                                <span class="book-score">
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="books-item border border-gray-300 rounded-lg p-3 flex flex-col items-center">
+                            <a href="#">
+                                <img class="book-cover" src="../static/resources/toi_thay_hoa_vang.jpg" alt="Bìa sách" style="max-width: 140px;">
+                            </a>
+                            <div class="book-info flex flex-col" style="padding: 8px;">
+                                <a href="#">
+                                    <p class="book-name limited-text" style="font-size: 16px; font-weight: 500;">Tôi thấy hoa vàng trên cỏ xanh</p>
+                                </a>
+                                <span class="book-author" style="font-size: 10px; font-weight: 100;">Nguyễn Nhật Ánh</span>
+                                <span class="book-price" style="font-weight: 700; color: red;">13.000 đ</span>
+                                <span class="book-score">
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                    <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                </span>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            
+        </article>
+        <div class="pagination-bar space-x-8 flex justify-center">
+            <i class="bi bi-caret-left-fill"></i>
+            <span><a href="#">1</a></span>
+            <span><a href="#">2</a></span>
+            <span><a href="#">...</a></span>
+            <span><a href="#">29</a></span>
+            <span><a href="#">30</a></span>
+            <i class="bi bi-caret-right-fill"></i>
+        </div>
+    </div>
+    
+</body>
+<footer>
+    <div class="flex flex-wrap justify-between p-4">
+        <div class="border border-dashed p-4 w-full md:w-1/3">
+            <h2 class="font-bold text-lg mb-2">Tác giả nổi bật</h2>
+            <ul class="list-none pl-0">
+                <li>Tô Hoài</li>
+                <li>Trần Hà My</li>
+                <li>Nguyễn Nhật Ánh</li>
+                <li>J.K. Rowling</li>
+                <li>Hồ Anh Thái</li>
+                <li>Nguyễn Trương Quý</li>
+                <li>Đỗ Bích Thúy</li>
+            </ul>
+        </div>
+        <div class="border border-dashed p-4 w-full md:w-1/3">
+            <h2 class="font-bold text-lg mb-2">Shop nổi bật</h2>
+            <ul class="list-none pl-0">
+                <li>Kim Đồng</li>
+                <li>Nhà sách Kim Anh</li>
+                <li>Nhà Nam</li>
+                <li>Minh Châu</li>
+                <li>Tiệm Sách Ước Mơ</li>
+                <li>Bình Minh</li>
+                <li>Sách Giấc Mơ</li>
+            </ul>
+        </div>
+        <div class="border border-dashed p-4 w-full md:w-1/3">
+            <h2 class="font-bold text-lg mb-2">Theo dõi chúng tôi trên</h2>
+            <ul class="list-none pl-0">
+                <li><a href="#" class="text-primary space-x-10 hover:underline"><i class="bi bi-facebook" style="font-size: 15px;"></i> Facebook</a></li>
+                <li><a href="#" class="text-primary hover:underline"><i class="bi bi-instagram" style="font-size: 15px;"></i> Instagram</a></li>
+                <li><a href="#" class="text-primary hover:underline"><i class="bi bi-linkedin"></i> LinkedIn</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+</html>

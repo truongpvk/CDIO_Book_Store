@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NavBar</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        .category-drop{
+            display: none;
+        }
+
+        .category-list:hover .category-drop {
+            display: block;
+        }
+        
+        .category-drop > li {
+            padding: 16px;
+        }
+
+        .category-drop > li:hover {
+            background-color: rgb(231, 225, 225);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans text-sm max-h-max">
+    <nav class="navigation-bar bg-white p-6 px-10 w-full border border-b-2 border-gray">
+        <div class="navigation-items flex items-center justify-between">
+            <div class="category-list relative">
+                <a href="#">
+                    <i class="bi bi-list" style="font-size: 28px;"></i>
+                </a>
+                <ul class="category-drop absolute z-10 left-0 w-48 flex flex-col justify-between items-center bg-white border border-black">
+                    <li><a href="#">Văn học trong nước</a></li>
+                    <li><a href="#">Văn học nước ngoài</a></li>
+                    <li><a href="#">Truyện tranh</a></li>
+                    <li><a href="#">Sách giáo khoa</a></li>
+                    <li><a href="#">Tiểu thuyết</a></li>
+                    
+                </ul>
+            </div>
+            <div class="search-and-redirect flex justify-between items-center gap-x-10 z-0">
+                <div class="search-bar flex items-center relative">
+                    <input 
+                    type="text" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    placeholder="Search..."
+                    style="min-width: 400px;"
+                    >
+                    <i class="bi bi-search absolute right-4"></i>
+                </div>
+                <div class="redirect-bar">
+                    <ul class="redirect-list flex justify-between gap-x-10 items-center">
+                        <li>
+                            <!-- Giỏ hàng -->
+                            <a href="#"><i class="bi bi-cart" style="font-size: 20px;"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><b>TRANG CHỦ</b></a>
+                        </li>
+                        <li>
+                            <a href="#">THÔNG BÁO</a>
+                        </li>
+                        <li>
+                            <a href="#">NGÔN NGỮ</a>
+                        </li>
+                        <li>
+                            <a href="#">KÊNH NGƯỜI BÁN</a>
+                        </li>
+                        <li>
+                            <a href="#">HỖ TRỢ</a>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+            <div class="login-and-register flex justify-between items-center space-x-5">
+                <div class="login-button p-3 rounded-full border border-black">
+                    <a href="#" class="login-buttion-submit"><button>Đăng nhập</button></a>
+                </div>
+                <div class="register-button py-3 px-5 rounded-full bg-black text-white">
+                    <a href="#" class="register-buttion-submit"><button>Đăng ký</button></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>
