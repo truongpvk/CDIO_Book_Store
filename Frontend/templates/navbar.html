@@ -37,7 +37,6 @@
                     <li><a href="#">Truyện tranh</a></li>
                     <li><a href="#">Sách giáo khoa</a></li>
                     <li><a href="#">Tiểu thuyết</a></li>
-                    
                 </ul>
             </div>
             <div class="search-and-redirect flex justify-between items-center gap-x-10 z-0">
@@ -53,11 +52,10 @@
                 <div class="redirect-bar">
                     <ul class="redirect-list flex justify-between gap-x-10 items-center">
                         <li>
-                            <!-- Giỏ hàng -->
                             <a href="#"><i class="bi bi-cart" style="font-size: 20px;"></i></a>
                         </li>
                         <li>
-                            <a href="#"><b>TRANG CHỦ</b></a>
+                            <a href="{{ url_for('homepage') }}"><b>TRANG CHỦ</b></a>
                         </li>
                         <li>
                             <a href="#">THÔNG BÁO</a>
@@ -72,15 +70,14 @@
                             <a href="#">HỖ TRỢ</a>
                         </li>
                     </ul>
-                    
                 </div>
             </div>
             <div class="login-and-register flex justify-between items-center space-x-5">
                 <div class="login-button p-3 rounded-full border border-black">
-                    <a href="#" class="login-buttion-submit"><button>Đăng nhập</button></a>
+                    <a href="{{ url_for('login') }}" class="login-button-submit"><button>Đăng nhập</button></a>
                 </div>
                 <div class="register-button py-3 px-5 rounded-full bg-black text-white">
-                    <a href="#" class="register-buttion-submit"><button>Đăng ký</button></a>
+                    <a href="{{ url_for('register') }}" class="register-button-submit"><button>Đăng ký</button></a>
                 </div>
             </div>
         </div>

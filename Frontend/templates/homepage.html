@@ -30,6 +30,7 @@
     </style>
 </head>
 <body class="bg-white font-sans text-sm max-h-max">
+    
     <style>
         .form-container input {
             border: 1px solid lightgray;
@@ -62,74 +63,72 @@
             display: none;
             background-color: rgb(0, 0, 0, 0.5);
         }
+        
 
     </style>
     <!-- Login Form -->
-    <div class="form-container-x login-form-container-x fixed w-full h-full z-50 flex justify-center items-center">
-        <div class="form-container border bg-white border-gray-200 p-8 shadow-lg rounded-lg relative" style="min-width: 25%;">
-            <div class="close-btn absolute" style="right: 15px; top: 15px; font-size: 25px;">
-                <button class="close-btn-x"><i class="bi bi-x-circle"></i></button>
-            </div>
-            <form action="" class="login-form flex flex-col space-y-5">
-                <h1 style="font-size: 20px;"><b>Đăng nhập</b></h1>
-                <div class="form-post flex flex-col space-y-5">
-                    <div class="username-post">
-                        <label for="username">Tên đăng nhập</label>
-                        <input type="text" name="username" id="username">
-                    </div>
-                    
-                    <div class="password-post">
-                        <div class="password-x flex justify-between">
-                            <label for="password">Mật khẩu</label>
-                            <button class="forgot-password-x" style="font-size: small; font-weight: lighter;">Quên mật khẩu?</button>
-                        </div>
-                        <input type="password" name="password" id="password">
-                    </div>
-                </div>
-                <div class="action-button flex justify-between items-center">
-                    <button class="signup-redirect" style="font-size: small; font-weight: lighter;">Chưa có tài khoản?</button>
-                    <button class="login-btn form-active-btn">Đăng nhập</button>
-                </div>
-            </form>
+<div class="form-container-x login-form-container-x fixed w-full h-full z-50 flex justify-center items-center">
+    <div class="form-container border bg-white border-gray-200 p-8 shadow-lg rounded-lg relative" style="min-width: 25%;">
+        <div class="close-btn absolute" style="right: 15px; top: 15px; font-size: 25px;">
+            <button class="close-btn-x"><i class="bi bi-x-circle"></i></button>
         </div>
+        <form action="/login" method="POST" class="login-form flex flex-col space-y-5">
+            <h1 style="font-size: 20px;"><b>Đăng nhập</b></h1>
+            <div class="form-post flex flex-col space-y-5">
+                <div class="username-post">
+                    <label for="username">Tên đăng nhập</label>
+                    <input type="text" name="username" id="username" required>
+                </div>
+                <div class="password-post">
+                    <label for="password">Mật khẩu</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+            </div>
+            <div class="action-button flex justify-between items-center">
+                <button type="button" class="signup-redirect" style="font-size: small; font-weight: lighter;" onclick="window.location.href='/register';">Chưa có tài khoản?</button>
+                <button type="submit" class="login-btn form-active-btn">Đăng nhập</button>
+            </div>
+        </form>
     </div>
+</div>
+
     
-    <!-- Signup Form -->
-    <div class="form-container-x signup-form-container-x fixed w-full h-full z-50 flex justify-center items-center" >
-        <div class="form-container border bg-white border-gray-200 p-8 shadow-lg rounded-lg relative" style="min-width: 25%;">
-            <div class="close-btn absolute" style="right: 15px; top: 15px; font-size: 25px;">
-                <button class="close-btn-x"><i class="bi bi-x-circle"></i></button>
-            </div>
-            <form action="" class="signup-form flex flex-col space-y-5">
-                <h1 style="font-size: 20px;"><b>Đăng ký</b></h1>
-                <div class="form-post flex flex-col space-y-5">
-                    <div class="username-post">
-                        <label for="username">Tên đăng nhập</label>
-                        <input type="text" name="username" id="username">
-                    </div>
-                    
-                    <div class="email-post">
-                        <label for="email">Email</label>
-                        <input type="text" name="email" id="email">
-                    </div>
-
-                    <div class="password-post">
-                        <label for="password">Mật khẩu</label>
-                        <input type="password" name="password" id="password">
-                    </div>
-
-                    <div class="repassword-post">
-                        <label for="repassword">Nhập lại mật khẩu</label>
-                        <input type="password" name="repassword" id="repassword">
-                    </div>
-                </div>
-                <div class="action-button flex justify-between items-center">
-                    <button class="login-redirect" style="font-size: small; font-weight: lighter;">Đã có tài khoản?</button>
-                    <button class="signup-btn form-active-btn">Đăng ký</button>
-                </div>
-            </form>
+   <!-- Signup Form -->
+<div class="form-container-x signup-form-container-x fixed w-full h-full z-50 flex justify-center items-center">
+    <div class="form-container border bg-white border-gray-200 p-8 shadow-lg rounded-lg relative" style="min-width: 25%;">
+        <div class="close-btn absolute" style="right: 15px; top: 15px; font-size: 25px;">
+            <button class="close-btn-x"><i class="bi bi-x-circle"></i></button>
         </div>
+        <form action="/register" method="POST" class="signup-form flex flex-col space-y-5">
+            <h1 style="font-size: 20px;"><b>Đăng ký</b></h1>
+            <div class="form-post flex flex-col space-y-5">
+                <div class="username-post">
+                    <label for="username">Tên đăng nhập</label>
+                    <input type="text" name="username" id="username" required>
+                </div>
+                
+                <div class="email-post">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+
+                <div class="password-post">
+                    <label for="password">Mật khẩu</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+
+                <div class="repassword-post">
+                    <label for="repassword">Nhập lại mật khẩu</label>
+                    <input type="password" name="repassword" id="repassword" required>
+                </div>
+            </div>
+            <div class="action-button flex justify-between items-center">
+                <button type="button" class="login-redirect" style="font-size: small; font-weight: lighter;" onclick="window.location.href='/login';">Đã có tài khoản?</button>
+                <button type="submit" class="signup-btn form-active-btn">Đăng ký</button>
+            </div>
+        </form>
     </div>
+</div>
 
 
     <!-- Nav Bar -->
@@ -172,10 +171,14 @@
             </div>
             <div class="login-and-register flex justify-between items-center space-x-5">
                 <div class="login-button p-3 rounded-full border border-black" style="cursor: pointer;">
-                    <a href="#" class="login-button-submit"><button>Đăng nhập</button></a>
+                    <a href="#" class="login-button-submit">
+                        Đăng nhập
+                    </a>
                 </div>
                 <div class="register-button py-3 px-5 rounded-full bg-black text-white" style="cursor: pointer;">
-                    <a href="#" class="register-buttion-submit"><button>Đăng ký</button></a>
+                    <a href="#" class="register-buttion-submit">
+                        Đăng ký
+                    </a>
                 </div>
             </div>
         </div>

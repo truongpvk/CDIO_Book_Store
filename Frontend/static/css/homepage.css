@@ -16,12 +16,7 @@ input[type="range"] {
     min-width: 70px;
 }
 
-.filter-items > select {
-    border: 1px solid gray;
-    border-radius: 5px;
-    padding: 3px;
-}
-
+.filter-items > select,
 .price-range > input {
     border: 1px solid gray;
     border-radius: 5px;
@@ -31,7 +26,7 @@ input[type="range"] {
 .book-grid-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* Tạo 5 cột với chiều rộng bằng nhau */
-    grid-template-rows: repeat(5, auto); /* Tạo 5 dòng với chiều cao 100px */
+    grid-template-rows: repeat(5, auto); /* Tạo 5 dòng với chiều cao tự động */
     gap: 15px; /* Khoảng cách giữa các ô */
     width: 100%; /* Đảm bảo grid chiếm toàn bộ chiều rộng */
 }
@@ -43,4 +38,34 @@ input[type="range"] {
     overflow: hidden; /* Ẩn phần văn bản vượt quá */
     text-overflow: ellipsis; /* Thêm dấu ba chấm (...) */
     white-space: normal; /* Cho phép ngắt dòng */
+}
+
+.flash-messages {
+    list-style-type: none;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.success {
+    background-color: #d4edda; /* Màu nền cho thông báo thành công */
+    color: #155724; /* Màu chữ cho thông báo thành công */
+    border: 1px solid #c3e6cb; /* Đường viền cho thông báo thành công */
+}
+
+.error {
+    background-color: #f8d7da; /* Màu nền cho thông báo lỗi */
+    color: #721c24; /* Màu chữ cho thông báo lỗi */
+    border: 1px solid #f5c6cb; /* Đường viền cho thông báo lỗi */
+}
+.flashes {
+    list-style-type: none;
+    padding: 0;
+}
+
+.flashes li {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
 }
