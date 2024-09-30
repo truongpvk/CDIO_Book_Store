@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, redirect, url_for, request, flash
-from flask_login import LoginManager, login_user, login_required, logout_user, UserMixin
+from flask_login import LoginManager
+from flask_login import login_required, logout_user, UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -8,7 +9,8 @@ app = Flask(__name__, template_folder=os.path.join(
     os.path.dirname(__file__), 'templates'))
 
 # Cấu hình cơ sở dữ liệu
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost/saleshopdb?charset=utf8mb4'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@'
+'localhost/saleshopdb?charset=utf8mb4'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'your_secret_key'
 
@@ -62,8 +64,14 @@ def register():
         flash('Mật khẩu không khớp. Vui lòng thử lại.', 'danger')
         return redirect(url_for('homepage'))
 
-    if User.query.filter_by(username=username).first() or User.query.filter_by(email=email).first():
-        flash('Tên người dùng hoặc email đã tồn tại. Vui lòng chọn cái khác.', 'danger')
+    if (
+        User.query.filter_by(username=username).first() or
+        User.query.filter_by(email=email).first()
+    ):
+        # Thực hiện hành động nếu điều kiện đúng
+
+        flash('Tên người dùng hoặc email đã tồn tại.'
+              'Vui lòng chọn cái khác.', 'danger')
         return redirect(url_for('homepage'))
 
     new_user = User(username=username, email=email)
