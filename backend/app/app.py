@@ -31,7 +31,7 @@ def data_in_page(page_number):
     return books_data[lowerlimit:uplimit]
 
 @app.route('/')
-def homepage():
+def homepage(username):
     global books_data
 
     books_data_x = mydb.getTableData('book', ['sku', 'title', 'author', 'price', 'score'])
@@ -49,10 +49,10 @@ def homepage():
 
     books_data = books_data_y.copy()
 
-    return redirect(url_for('pagination', page_number=1))
+    return redirect(url_for('pagination', page_number=1, username=username))
 
 @app.route('/page=<page_number>')
-def pagination(page_number):
+def pagination(page_number, username=None):
     data = data_in_page(int(page_number))
 
     if books_data:
@@ -63,13 +63,14 @@ def pagination(page_number):
     return render_template('homepage.html', book_data=data, page_number=int(page_number), max_page=max_page)
 
 @app.route('/<user>')
-def homepage_user(user):
+def homepage_user(user, sort_value=1):
     global books_data
 
     if LOGIN_SESSION['username'] is None:
         return redirect(url_for('homepage'))
     else:
-        books_data_x = mydb.getTableData('book', ['sku', 'title', 'author', 'price', 'score'])
+        book_option = ['order_price_ascending', 'order_price_descending', 'order_title_ascending', 'order_title_descending']
+        books_data_x = mydb.getTableData(book_option[sort_value - 1], ['sku', 'title', 'author', 'price', 'score'])
         books_data_y = []
 
         for book in books_data_x:
@@ -96,6 +97,16 @@ def pagination_user(user, page_number):
         return redirect('/')
 
     return render_template('homepage_user.html', book_data=data, page_number=int(page_number), max_page=max_page, username=user)
+
+@app.route('/sort', methods=['POST'])
+def user_sort_page(user):
+    if request.method == 'POST':
+        req_data = request.get_json()
+        sort_value = req_data['option']
+
+        print(sort_value)
+
+        return {'yes': True}
 
 @app.route('/login', methods=['POST', 'GET'])
 def user_login():

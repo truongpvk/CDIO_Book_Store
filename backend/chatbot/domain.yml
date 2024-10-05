@@ -1,0 +1,66 @@
+version: "3.1"
+
+intents:
+  - ask_book_content
+  - search_book_by_genre
+  - search_book_by_name
+  - search_book_by_author
+  - search_book_by_multiple_criteria
+  - search_again
+  - greet
+  - goodbye
+
+entities:
+  - book_name
+  - genre
+  - author
+
+responses:
+  utter_book_content:
+    - text: "Cuốn sách {book_name} nói về những câu chuyện kỳ thú."
+    - text: "Nội dung của cuốn sách {book_name} xoay quanh các chủ đề rất hấp dẫn."
+    - text: "Cuốn sách {book_name} có nội dung chính liên quan đến..."
+    - text: "Sách {book_name} mang lại nhiều kiến thức về..."
+    - text: "Bạn sẽ được khám phá nhiều điều mới mẻ trong cuốn sách {book_name}."
+
+  utter_search_genre:
+    - text: "Dưới đây là các cuốn sách thuộc thể loại {genre}:"
+    - text: "Chúng tôi có những cuốn sách thuộc thể loại {genre} sau đây."
+    - text: "Các sách thể loại {genre} bao gồm:"
+    - text: "Danh sách sách thuộc thể loại {genre} mà tôi tìm được cho bạn."
+    - text: "Đây là một số cuốn sách thuộc thể loại {genre} mà bạn có thể quan tâm."
+
+  utter_search_author:
+    - text: "Các cuốn sách của tác giả {author} bao gồm:"
+    - text: "Dưới đây là những tác phẩm nổi bật của {author}."
+    - text: "Bạn có thể tham khảo các sách của {author}."
+    - text: "Tôi đã tìm được các cuốn sách của tác giả {author}."
+    - text: "Danh sách các sách của tác giả {author} mà bạn có thể quan tâm."
+
+  utter_search_book_by_name:
+    - text: "Tôi đã tìm thấy cuốn sách có tên {book_name}."
+    - text: "Cuốn {book_name} có sẵn trong thư viện của chúng tôi."
+    - text: "Dưới đây là thông tin về cuốn sách {book_name}."
+    - text: "Chúng tôi có cuốn sách tên là {book_name}."
+    - text: "Bạn có thể tham khảo cuốn {book_name} từ danh sách sách của chúng tôi."
+
+  utter_greet:
+    - text: "Chào bạn! Tôi có thể giúp gì cho bạn hôm nay?"
+    - text: "Xin chào! Bạn đang tìm kiếm thông tin gì?"
+    - text: "Hello! Tôi có thể hỗ trợ bạn điều gì?"
+    - text: "Hi! Tôi sẵn sàng giúp đỡ bạn."
+    - text: "Chào mừng bạn! Hãy cho tôi biết bạn muốn tìm gì."
+
+  utter_goodbye:
+    - text: "Tạm biệt! Hy vọng sớm gặp lại bạn."
+    - text: "Chào tạm biệt, chúc bạn một ngày tốt lành!"
+    - text: "Hẹn gặp lại bạn lần sau!"
+    - text: "Tạm biệt! Chúc bạn may mắn với việc tìm sách."
+    - text: "Chúc bạn có một ngày vui vẻ! Hẹn gặp lại."
+
+actions:
+  - action_search_book
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

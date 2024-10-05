@@ -228,18 +228,31 @@
         }
 
     </style>
+    
     <!-- Login Form -->
-    <div class="form-container-x login-form-container-x fixed w-full h-full z-50 flex justify-center items-center">
+    {% if login_process %}
+    <div class="form-container-x login-form-container-x fixed w-full h-full z-50 flex justify-center items-center" style="display: flex;">
+    {% else %}
+    <div class="form-container-x login-form-container-x fixed w-full h-full z-50 flex justify-center items-center" style="display: none;">
+    {% endif %}
         <div class="form-container border bg-white border-gray-200 p-8 shadow-lg rounded-lg relative" style="min-width: 25%;">
             <div class="close-btn absolute" style="right: 15px; top: 15px; font-size: 25px;">
                 <button class="close-btn-x"><i class="bi bi-x-circle"></i></button>
             </div>
-            <form action="" class="login-form flex flex-col space-y-5">
+            <form action="{{url_for('user_login')}}" class="login-form flex flex-col space-y-5" method="post">
+
+                {% if message %}
+                <div class="p-5 border border-gray-300 rounded-lg text-white" style="background-color: rgb(249, 125, 125); margin-top: 10px;">
+                    <h1>{{message}}</h1>
+                </div>
+                {% endif %}
+                
+
                 <h1 style="font-size: 20px;"><b>Đăng nhập</b></h1>
                 <div class="form-post flex flex-col space-y-5">
                     <div class="username-post">
                         <label for="username">Tên đăng nhập</label>
-                        <input type="text" name="username" id="username">
+                        <input type="text" name="username" id="login-username">
                     </div>
                     
                     <div class="password-post">
@@ -247,7 +260,7 @@
                             <label for="password">Mật khẩu</label>
                             <button class="forgot-password-x" style="font-size: small; font-weight: lighter;">Quên mật khẩu?</button>
                         </div>
-                        <input type="password" name="password" id="password">
+                        <input type="password" name="password" id="login-password">
                     </div>
                 </div>
                 <div class="action-button flex justify-between items-center">
@@ -257,14 +270,25 @@
             </form>
         </div>
     </div>
-
-    <!-- Sign Up Form -->
-    <div class="form-container-x signup-form-container-x fixed w-full h-full z-50 flex justify-center items-center">
+    
+    {% if signup_process %}
+    <div class="form-container-x signup-form-container-x fixed w-full h-full z-50 flex justify-center items-center" style="display: flex;">
+    {% else %}
+    <div class="form-container-x signup-form-container-x fixed w-full h-full z-50 flex justify-center items-center" style="display: none;">
+    {% endif %}
+    <!-- Signup Form -->
         <div class="form-container border bg-white border-gray-200 p-8 shadow-lg rounded-lg relative" style="min-width: 25%;">
             <div class="close-btn absolute" style="right: 15px; top: 15px; font-size: 25px;">
                 <button class="close-btn-x"><i class="bi bi-x-circle"></i></button>
             </div>
-            <form action="" class="signup-form flex flex-col space-y-5">
+            <form action="{{url_for('user_signup')}}" class="signup-form flex flex-col space-y-5" method="post">
+
+                {% if message_signup %}
+                <div class="p-5 border border-gray-300 rounded-lg text-white" style="background-color: rgb(249, 125, 125); margin-top: 10px;">
+                    <h1>{{message_signup}}</h1>
+                </div>
+                {% endif %}
+
                 <h1 style="font-size: 20px;"><b>Đăng ký</b></h1>
                 <div class="form-post flex flex-col space-y-5">
                     <div class="username-post">
@@ -294,6 +318,7 @@
             </form>
         </div>
     </div>
+
 
     <!-- Nav Bar -->
     <nav class="navigation-bar bg-white p-6 px-10 w-full border border-b-2 border-gray">
@@ -333,16 +358,49 @@
                     
                 </div>
             </div>
+            {% if username %}
+            <div class="user-info-and-signout pr-20">
+                <div class="relative">
+                    <i class="user-face bi bi-person-circle" style="font-size: 40px; cursor: pointer;"></i>
+                    <div class=" bg-white shadow-md absolute z-40 rounded-lg" style="min-width: 200px; top: 50px; left: -80px;">
+                        <div class="user-info-tab flex flex-col space-y-5 border-gray-200 border p-5" style="display: none;">
+                            <span>{{username}}</span>
+                            <span>Số lượt mua: 242</span>
+                            <button type="submit" class="border border-gray-200 rounded-lg" style="border-width: 0.5px;">
+                                <a href="/logout">Đăng xuất</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
             <div class="login-and-register flex justify-between items-center space-x-5">
-                <div class="login-button p-3 rounded-full border border-black">
+                <div class="login-button p-3 rounded-full border border-black" style="cursor: pointer;">
                     <a href="#" class="login-button-submit"><button>Đăng nhập</button></a>
                 </div>
-                <div class="register-button py-3 px-5 rounded-full bg-black text-white">
+                <div class="register-button py-3 px-5 rounded-full bg-black text-white" style="cursor: pointer;">
                     <a href="#" class="register-buttion-submit"><button>Đăng ký</button></a>
                 </div>
             </div>
+            {% endif %}
         </div>
     </nav>
+
+    <!-- User Tab -->
+    <script>
+        const button = document.getElementsByClassName("user-face")[0];
+        const window_tab = document.getElementsByClassName("user-info-tab")[0];
+        button.addEventListener("click", function() {
+            console.log("Button is clicked!");
+            console.log(window_tab.style.display);
+            if (window_tab.style.display == "flex") {
+                window_tab.style.display = "none";
+            } else {
+                window_tab.style.display = "flex";
+                console.log(window_tab.style.display);
+            }
+        });
+    </script>
 
     <script>
         const login_button = document.getElementsByClassName("login-button")[0];

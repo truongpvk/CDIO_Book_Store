@@ -1,0 +1,46 @@
+use bookstore;
+
+CREATE TABLE `User` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`username` VARCHAR(255) NOT NULL,
+	`email` VARCHAR(255),
+	`password` VARCHAR(255) NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
+
+CREATE TABLE `Book` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`sku` VARCHAR(255) NOT NULL,
+	`title` VARCHAR(255) NOT NULL,
+	`price` INTEGER NOT NULL,
+	`category` VARCHAR(255) NOT NULL,
+	`author` VARCHAR(255),
+	`description` TEXT,
+	`stages` VARCHAR(255),
+	`supplier` VARCHAR(255),
+	`publisher` VARCHAR(255),
+	`size` VARCHAR(255),
+	`page_qty` INTEGER UNSIGNED NOT NULL DEFAULT 0,
+	PRIMARY KEY(`id`)
+);
+
+
+CREATE TABLE `User_Buy_Book` (
+	`id_user` INTEGER NOT NULL AUTO_INCREMENT UNIQUE,
+	`id_book` INTEGER NOT NULL,
+	`date_transaction` DATETIME NOT NULL,
+	`quantity` INTEGER DEFAULT 1,
+	PRIMARY KEY(`id_user`, `id_book`)
+);
+
+
+ALTER TABLE `User_Buy_Book`
+ADD FOREIGN KEY(`id_user`) REFERENCES `User`(`id`)
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+ALTER TABLE `User_Buy_Book`
+ADD FOREIGN KEY(`id_book`) REFERENCES `Book`(`id`)
+ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+DELETE FROM book;
+ALTER TABLE book AUTO_INCREMENT = 1;
