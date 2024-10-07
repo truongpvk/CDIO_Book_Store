@@ -1,0 +1,88 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - Xin chào
+    - Chào bạn
+    - Chào
+    - Xin chào bạn
+
+- intent: goodbye
+  examples: |
+    - Tạm biệt
+    - Bye
+    - Hẹn gặp lại
+    - Gặp lại sau
+    - Bai
+    - Bái bai
+
+- intent: find_by_title
+  examples: |
+    - Bạn có [Harry Potter](book_title) không?
+    - Trong này có bán [Tôi thấy hoa vàng trên cỏ xanh](book_title) không?
+    - Cửa hàng có bán cuốn sách nào tên là [Harry Potter](book_title) không?
+    - Tôi muốn tìm cuốn sách có tên là [Đắc Nhân Tâm](book_title).
+    - Bạn có thể giúp tôi tìm cuốn sách [Harry Potter](book_title) không?
+    - Tôi đang tìm cuốn sách tên là [Nhà Giả Kim](book_title).
+    - Bạn có biết cuốn sách nào có tên [Sapiens](book_title) không?
+    - Tôi muốn mua sách [Đời ngắn đừng ngủ dài](book_title).
+
+- intent: find_by_genre
+  examples: |
+    - Tìm cho tôi những cuốn sách thuộc thể loại [đời thường](genre).
+    - Tôi muốn tìm sách [tiểu thuyết](genre).
+    - Bạn có sách [hành động](genre) nào không?
+    - Có thể gợi ý cho tôi sách thuộc thể loại [khoa học viễn tưởng](genre) được không?
+    - Tôi muốn tìm sách [tâm lý](genre).
+    - Bạn có biết cuốn sách nào thuộc thể loại [hài hước](genre) không?
+
+- intent: find_by_author
+  examples: |
+    - Tôi đang tìm sách của tác giả [Nguyễn Nhật Ánh](author).
+    - Có cuốn nào của tác giả [J.K. Rowling](author) không?
+    - Bạn có biết sách của tác giả [Haruki Murakami](author) không?
+    - Tôi muốn tìm cuốn sách viết bởi [George Orwell](author).
+    - Bạn có thể gợi ý cho tôi một cuốn sách của tác giả [Dan Brown](author) không?
+
+- intent: find_by_multiple
+  examples: |
+    - Tìm sách [Harry Potter](book_name) của tác giả [J.K. Rowling](author)
+    - Có cuốn sách [The Hobbit](book_name) của [J.R.R. Tolkien](author) không?
+    - Tìm sách tên [1984](book_name) của tác giả [George Orwell](author)
+    - Tôi muốn tìm sách [The Shining](book_name) của [Stephen King](author)
+    - Bạn có sách [Sống mòn](book_name) của [Nam Cao](author) không?
+    - Có cuốn sách nào tên [Dế Mèn phiêu lưu ký](book_name) của [Tô Hoài](author) không?
+    - Tôi muốn tìm cuốn [To Kill a Mockingbird](book_name) của [Harper Lee](author)
+
+- intent: ignore_book
+  examples: |
+    - Không phải nó
+    - Hãy tìm kết quả khác
+    - Đây không phải mong muốn của tôi
+    - Không
+    - Không phải
+    - Không đúng
+    - Cái khác đi
+    - Sai rồi
+    - Sai
+    - Bạn đã sai
+    - Thử cái khác
+
+- intent: agree_book
+  examples: |
+    - Chính xác
+    - Đúng là nó
+    - Đúng
+    - Đúng rồi
+    - Chính là nó
+    - Là nó
+    - Đây là cái tôi muốn
+
+- intent: ask_content
+  examples: |
+    - Cuốn sách [Đắc Nhân Tâm](book_title) nói về điều gì?
+    - Bạn có thể cho tôi biết nội dung của cuốn [Harry Potter](book_title) không?
+    - Nội dung của cuốn sách [Nhà Giả Kim](book_title) là gì?
+    - Tôi muốn biết về nội dung của cuốn [Sapiens](book_title).
+    - Có ai biết cuốn sách [Đời ngắn đừng ngủ dài](book_title) nói về cái gì không?

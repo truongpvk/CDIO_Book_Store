@@ -1,6 +1,8 @@
-from flask import Flask, redirect, request, url_for, render_template
+from flask import Flask, redirect, request, url_for, render_template, jsonify
 import model
 import re
+import random
+import os
 
 app = Flask(__name__)
 # app.secret_key = '123456'
@@ -16,10 +18,27 @@ def is_valid_email(email):
     else:
         return False
 
+PAGE_SESSION = {
+    'current': 0,
+    'sku': None,
+}
+
 LOGIN_SESSION = {
     'username': None
 }
 
+author = set()
+category = set()
+
+COVER = []
+
+cover_path = './static/resources'
+files = os.listdir(cover_path)
+
+for f in files:
+    COVER.append(f)
+
+full_books_data = list()
 books_data = list()
 
 def data_in_page(page_number):
@@ -28,13 +47,19 @@ def data_in_page(page_number):
     uplimit = page_number * 25
     lowerlimit = uplimit - 25 
 
+    if uplimit > len(books_data):
+        uplimit = len(books_data) - 1
+
     return books_data[lowerlimit:uplimit]
 
 @app.route('/')
-def homepage(username):
+def homepage():
     global books_data
+    global full_books_data
+    global author
+    global category
 
-    books_data_x = mydb.getTableData('book', ['sku', 'title', 'author', 'price', 'score'])
+    books_data_x = mydb.getTableData('book', ['sku', 'title', 'author', 'price', 'score', 'category'])
     books_data_y = []
 
     for book in books_data_x:
@@ -44,73 +69,77 @@ def homepage(username):
             'author': book[2],
             'price': book[3],
             'review_score': book[4],
+            'cover': COVER[random.randint(0, len(COVER) - 1)],
+            'category': book[-1]
         }
+        author_x = data['author'].strip().split(',')
+
+        for a in author_x:
+            if a in "                   ":
+                author_x.remove(a)
+        
+
+        author.update(author_x)
+        category.add(data['category'])
+
         books_data_y.append(data)
 
     books_data = books_data_y.copy()
+    full_books_data = books_data_y.copy()
 
-    return redirect(url_for('pagination', page_number=1, username=username))
+    return redirect(url_for('pagination', page_number=1))
 
+"""Hiển thị phân trang"""
 @app.route('/page=<page_number>')
-def pagination(page_number, username=None):
+def pagination(page_number):
+    if LOGIN_SESSION['username']:
+        username = LOGIN_SESSION['username']
+    else:
+        username = None
     data = data_in_page(int(page_number))
 
     if books_data:
         max_page = len(books_data) // 25
     else:
-        return redirect('/')
+        max_page = 1
 
-    return render_template('homepage.html', book_data=data, page_number=int(page_number), max_page=max_page)
-
-@app.route('/<user>')
-def homepage_user(user, sort_value=1):
-    global books_data
-
-    if LOGIN_SESSION['username'] is None:
-        return redirect(url_for('homepage'))
+    if LOGIN_SESSION['username']:
+        username = LOGIN_SESSION['username']
     else:
-        book_option = ['order_price_ascending', 'order_price_descending', 'order_title_ascending', 'order_title_descending']
-        books_data_x = mydb.getTableData(book_option[sort_value - 1], ['sku', 'title', 'author', 'price', 'score'])
-        books_data_y = []
+        username = None
 
-        for book in books_data_x:
-            data = {
-                'sku': book[0],
-                'title': book[1],
-                'author': book[2],
-                'price': book[3],
-                'review_score': book[4],
-            }
-            books_data_y.append(data)
+    return render_template(
+        'homepage.html',
+        username=username, 
+        book_data=data, 
+        page_number=int(page_number), 
+        max_page=max_page, 
+        genre=category, 
+        author=author
+    )
 
-        books_data = books_data_y.copy()
+"""Định hướng trang sản phẩm chi tiết"""
+@app.route('/<sku>')
+def product_page(sku):
+    global PAGE_SESSION
+    PAGE_SESSION['current'] = 1
+    PAGE_SESSION['sku'] = sku
 
-        return redirect(url_for('pagination_user', user=user, page_number=1))
-
-@app.route('/<user>/page=<page_number>')
-def pagination_user(user, page_number):
-    data = data_in_page(int(page_number))
-
-    if books_data:
-        max_page = len(books_data) // 25
+    if LOGIN_SESSION['username']:
+        username = LOGIN_SESSION['username']
     else:
-        return redirect('/')
+        username = None
 
-    return render_template('homepage_user.html', book_data=data, page_number=int(page_number), max_page=max_page, username=user)
-
-@app.route('/sort', methods=['POST'])
-def user_sort_page(user):
-    if request.method == 'POST':
-        req_data = request.get_json()
-        sort_value = req_data['option']
-
-        print(sort_value)
-
-        return {'yes': True}
+    return render_template('product_page.html', username=username)
 
 @app.route('/login', methods=['POST', 'GET'])
 def user_login():
     if request.method == 'POST':
+        if PAGE_SESSION['current'] == 0:
+            redirURL = '/'
+        else:
+            redirURL = url_for('product_page', sku=PAGE_SESSION['sku'])
+
         username = request.form.get('username')
         passwd = request.form.get('password')
 
@@ -119,17 +148,20 @@ def user_login():
             info = info[0]
             if passwd == info[-1]:
                 LOGIN_SESSION['username'] = username
-                return redirect(url_for('homepage_user', user=username))
+                return redirect(redirURL)
             else:
-                error_message = "Tên đăng nhập hoặc mật khẩu không đúng!"
-                return render_template('homepage.html', message=error_message, login_process=1)
+                return redirect(redirURL)
         else:
-            error_message = "Tên đăng nhập hoặc mật khẩu không đúng!"
-            return render_template('homepage.html', message=error_message, login_process=1)
+            return redirect(redirURL)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def user_signup():
     if request.method == 'POST':
+        if PAGE_SESSION['current'] == 0:
+            redirURL = '/'
+        else:
+            redirURL = url_for('product_page', sku=PAGE_SESSION['sku'])
+
         username = request.form.get('username')
         passwd = request.form.get('password')
         email = request.form.get('email')
@@ -142,22 +174,79 @@ def user_signup():
             if info is None:
                 mydb.insertTable('user', [(username, email, passwd)])
                 LOGIN_SESSION['username'] = username
-                return redirect(url_for('homepage_user', user=username))
+                return redirect(redirURL)
             else:
-                message_signup = 'Người dùng đã tồn tại!'
-                return render_template('homepage.html', message_signup=message_signup)
+                return redirect(redirURL)
+
         else:
-            message_signup = 'Mật khẩu không trùng khớp!'
-            return render_template('homepage.html', message_signup=message_signup)
+            return redirect(redirURL)        
 
 @app.route('/logout')
 def logout():
-    LOGIN_SESSION['username'] = None
-    return redirect(url_for('homepage'))
+    global LOGIN_SESSION
 
-@app.route('/<sku>')
-def product_page(sku):
-    pass
+    if PAGE_SESSION['current'] == 0:
+        redirURL = '/'
+    else:
+        redirURL = url_for('product_page', sku=PAGE_SESSION['sku'])
 
+    if LOGIN_SESSION['username']:
+
+        LOGIN_SESSION['username'] = None
+        return redirect(redirURL)
+    else:
+        return redirect(redirURL)
+
+@app.route('/search=<content>', methods=['POST'])
+def search(content: str):
+    global books_data
+    search_value = content.lower()
+
+    search_book_data = [book for book in full_books_data if search_value in book['title'].lower()]
+    books_data = search_book_data.copy()
+
+    return jsonify({
+        'status': 'Everything okay!',
+        'redirectURL': url_for('pagination', page_number=1),
+    })
+
+@app.route('/sort=<value>', methods=['POST'])
+def sort(value):
+    global books_data
+    value = int(value)
+
+    view_options = ['order_price_ascending', 'order_price_descending', 'order_title_ascending', 'order_title_descending']
+
+    books_data_x = mydb.getTableData(view_options[value - 1], ['sku', 'title', 'author', 'price', 'score', 'category'])
+    books_data_y = []
+
+    print(books_data[:5])
+
+    for book in books_data_x:
+        data = {
+            'sku': book[0],
+            'title': book[1],
+            'author': book[2],
+            'price': book[3],
+            'review_score': book[4],
+            'cover': COVER[random.randint(0, len(COVER) - 1)],
+            'category': book[-1]
+        }
+        books_data_y.append(data)
+
+    books_data = books_data_y.copy()
+
+    print(books_data[:5])
+
+    return jsonify({
+        'status': 'Everything okay!',
+        'redirectURL': url_for('pagination', page_number=1),
+    })
+
+@app.route('/filter', methods=['POST'])
+def filter():
+    if request.method == 'POST':
+        min_price = request.form.get('min-price')
+        max_price = request.form.get('max-price')
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port=5055)

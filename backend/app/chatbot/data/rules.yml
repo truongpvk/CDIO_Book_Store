@@ -1,0 +1,26 @@
+version: "3.1"
+
+rules:
+  - rule: Find again when customer ignore
+    condition:
+      - slot_was_set:
+          - check: "True"
+    steps:
+      - intent: ignore_book
+      - slot_was_set:
+          - check: "False"
+      - action: find_book_form
+      - active_loop: find_book_form
+
+  - rule: find again
+    condition:
+      - active_loop: find_book_form
+    steps:
+      - action: find_book_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_find_book_by_name
+      - slot_was_set:
+          - check: "True"
+      - action: utter_ask_refind

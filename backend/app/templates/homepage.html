@@ -226,11 +226,7 @@
                     <a href="#" class="register-buttion-submit"><button>Đăng ký</button></a>
                 </div>
             </div>
-            {% endif %}
-            
-            
-
-            
+            {% endif %}            
         </div>
     </nav>
 
@@ -301,7 +297,7 @@
     <!-- Main Content -->
     <div class="p-8 w-full shadow-lg">
         <article class="flex justify-between space-x-8 text-md p-5">
-            <form class="filter-bar border-r border-r-gray-200 space-y-5 px-5 py-6" style="max-width: 300px;">
+            <form action="" method="post" class="filter-bar border-r border-r-gray-200 space-y-5 px-5 py-6" style="max-width: 300px;">
                 <h1 style="font-size: 20px;"><b>Bộ lọc tìm kiếm</b></h1>
                 <div class="filter-items filter-price flex flex-col">
                     <label for="price-range">Giá (VNĐ):</label>
@@ -312,22 +308,22 @@
                 </div>
                 <div class="filter-items filter-category flex flex-col">
                     <label for="category">Thể loại:</label>
-                    <select name="category" id="category" style="min-width: 70px;">
+                    <select name="category" id="category" style="min-width: 70px; max-width: 166px;">
                         <option value="all">Tất cả</option>
-                        <option value="#">Sách nước ngoài</option>
-                        <option value="#">Sách trong nước</option>
-                        <option value="#">Sách giáo khoa</option>
-                        <option value="#">Truyện tranh</option>
+
+                        {% for g in genre %}
+                        <option value="{{g}}">{{g}}</option>
+                        {% endfor %}
+
                     </select>
                 </div>
                 <div class="filter-items filter-author flex flex-col">
                     <label for="author">Tác giả:</label>
-                    <select name="author" id="author" style="min-width: 70px;">
+                    <select name="author" id="author" style="min-width: 70px; max-width: 166px;">
                         <option value="all">Tất cả</option>
-                        <option value="#">A</option>
-                        <option value="#">B</option>
-                        <option value="#">C</option>
-                        <option value="#">D</option>
+                        {% for a in author %}
+                        <option value="{{a}}">{{a}}</option>
+                        {% endfor %}
                     </select>
                 </div>
 
@@ -451,20 +447,6 @@
         </div>
     </div>
 
-    <div class="chat-container"></div>
-  
-    <script src="https://npm-scalableminds.s3.eu-central-1.amazonaws.com/@scalableminds/chatroom@master/dist/Chatroom.js"/></script>
-    <script type="text/javascript">
-        var chatroom = new window.Chatroom({
-            host: "http://localhost:5005",
-            title: "Chat with Mike",
-            container: document.querySelector(".chat-container"),
-            welcomeMessage: "Hi, I am Mike. How may I help you?",
-            speechRecognition: "en-US",
-            voiceLang: "en-US"
-        });
-        chatroom.openChat();
-    </script>
 </body>
 <footer>
     <div class="flex flex-wrap justify-between p-4">
