@@ -1,0 +1,18 @@
+{
+  "lookup": {
+    "eJyLrq6NBQAEOAGx": "action_listen",
+    "eJwti10KgCAQhK+yB5CoV68iIv1ssGRr6BaEePcW7G3m+2ZcbQbqlfEJ8yqU2ELtIfB8ooW/RCqCrNsSkxQddeumYfRK74JZIbKQEKp3S0pH0BbRGyDWs1jYibewvJ235j+UNS7O": "action_search_book",
+    "eJydjVEKAjEMRK+SAyyy/vYqpYTuGjHYTaWJgpS9+0bqAcS/zJuZTOz7BP3R6IV5Na4SoI8DJW8U4CsKq5F4Vks19dBw4/k0J6dPpeaQxNiY3I9LrXd0VShNwOJlC3BlueDyHnz/bVkpt/WGn39/D6UD+9tWxw==": "Đây có phải sách bạn muốn tìm?",
+    "eJytTl0KgzAMvkoOIKOdb77sICql1ohlmopNZSLefVF3gDH2Er6/5Eu57Rls04yLsY59oAK2CxiyIxbwIYOPjCTZOASOErrcUt9ULWqKOIuIxJ49il82ITyNsAHrDDzJMhfQeWpNs176/l1zRDu73hz3/l7E+JJwlZTWSqbC+wruAF0OU18ljTb3EE9Lux6aU9IEYzpQK4hP042Pn5+r378Tjbc=": "action_listen",
+    "eJwti0sKgDAMRK+SAxTRba9SSvETMaCptFGQ0rsbqbt5M29cqQbKmfAO4ywU2UJpIfB4oIUfdsqCrG7eo+RPumSLyYIbut5rf2VUKshCQqiGa4Y3QKxXsbASL2F6Qhtq9S9x1i6Y": "action_search_book",
+    "eJydjd0JwzAMhFfRAKGkr17FGOOkKhFNpWIphWKye1TcAUre7uc7LrZ9gPaq+M5lNhIO0LrIXJ4Y4GdWUkN2Vlcx/UKbLVIDxOtlTJ5viu4aspEROhE7kQYg9qkFuBPf8vTJvdj/O1YsdV7yJPI495IOvvRVaQ==": "Đây có phải sách bạn muốn tìm?",
+    "eJytjlEKgzAQRK+yB5CS1L/89CBWQowrCdVEzKZUgnfvqj1AKf1ZZmfeMtuUrYIyL/jUxpKPQUE5hQ5mQgWfZfSJMDCbxkhphzK5uCho5EW07OeEvBUM5MkjE81JtBX4wKekYPCh192qz2D7rjihWazTXYyP/7YQvpi+ZyGl4CnwuoLdxVDD7O5Zoqk9pCOS1kF3WDLAlHfVs6IjtNPtt8/aNwW9izE=": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohvSg1taS2NhYA6dwbhQ==": "Chào bạn, rất vui lòng được giúp đỡ bạn!",
+    "eJx1jsEKgzAQRH9le/eQbekl135GLRJlTQN2lbiRQvDf3djizcsys/MY5pnXCvIUaWlcJ2FkC/knGnYfsvA3Q5iFWNk0U1QmsFqx4CORrKcdQl+FHu86GUNmhLZOSA65griru8CSAgwl76/sQQUiltuaQtCtAx/22E1Hqn88ui6nq14b4eJNlA==": "action_listen",
+    "eJwti1EKwyAQRK+yBwgl+fUqImLSaViwa9BtIYh375L0b2beG9/HRP2o+Ma0KRdx1O8QJb3h6F8yN4WY23LRZtKWFHuppyO/POZg5NNQDUCUlWGO3yEVYSIW+6qjF8szrme89jHCD3HLLl8=": "action_search_book",
+    "eJydjW8KwjAMxa+SAwzRr71KKaGrcQZnKmkURtndF3QHkH17f36PF/s6QH8pfTAX4yoB+k+g5CcF2M3MzUicbXO15lDJRlPVJUC8nM7Jm3cj9YLE2JiciROJUhqAxbcW4MZyxXHBb77+d9woa7njWOvjyEfaAPpEVCw=": "Đây có phải sách bạn muốn tìm?",
+    "eJytjtENgzAMRFfxAKgi5S8/HQRQFIKBqJCgxKmKELvXpB2gqvpjPd+dda73o4B9DfhQ2pD1TsL+BuX0ghI+y2wjoeNsnD1FDhlNOPqwSajFpWzZSREDG+jIkkXO1CO6gG0B1vEtSRis61W3qawf3xVH1MFMqvP+/s8OwieHm1QKUfIs8bqBOWGoYJ2aJFBXFmK2hJmgy5JwsKSTeibKplluv/zVvgBq1Yjw": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohPT8/JakytbY2FgAh+hxX": "Tạm biệt, hẹn gặp lại bạn nhé!",
+    "eJx9zUEOgkAMheGrPPcsYEWYc7hTQ2awwSbQIVAMZsLdLY5b3X0v+dNe0l4gTTM9W98pR3FIGa34kRy+Y+BFSaxdF5qtYbGpDn2M9/Ci/ecVpc2y83WtyFcjAh/qai3wOBQaQf9BPWHIFSNkCMSisqTm9Ofz7Q3SGkan": "action_listen"
+  }
+}

@@ -97,7 +97,7 @@ def pagination(page_number):
     else:
         username = None
     data = data_in_page(int(page_number))
-
+    print(data)
     if books_data:
         max_page = len(books_data) // 25
     else:
@@ -215,26 +215,14 @@ def sort(value):
     global books_data
     value = int(value)
 
-    view_options = ['order_price_ascending', 'order_price_descending', 'order_title_ascending', 'order_title_descending']
-
-    books_data_x = mydb.getTableData(view_options[value - 1], ['sku', 'title', 'author', 'price', 'score', 'category'])
-    books_data_y = []
-
-    print(books_data[:5])
-
-    for book in books_data_x:
-        data = {
-            'sku': book[0],
-            'title': book[1],
-            'author': book[2],
-            'price': book[3],
-            'review_score': book[4],
-            'cover': COVER[random.randint(0, len(COVER) - 1)],
-            'category': book[-1]
-        }
-        books_data_y.append(data)
-
-    books_data = books_data_y.copy()
+    if value == 1:
+        books_data = sorted(books_data, key=lambda x: x['price'])
+    elif value == 2:
+        books_data = sorted(books_data, key=lambda x: x['price'], reverse=True)
+    elif value == 3:
+        books_data = sorted(books_data, key=lambda x: x['title'])
+    elif value == 4:
+        books_data = sorted(books_data, key=lambda x: x['title'], reverse=True)
 
     print(books_data[:5])
 
@@ -245,8 +233,64 @@ def sort(value):
 
 @app.route('/filter', methods=['POST'])
 def filter():
+    global books_data
+
     if request.method == 'POST':
         min_price = request.form.get('min-price')
         max_price = request.form.get('max-price')
+        
+        min_price = float(min_price) if min_price else 0
+        max_price = float(max_price) if max_price else 0
+
+        genre = request.form.get('category')
+        author = request.form.get('author')
+        review_score = request.form.get('review')
+
+        review_score = int(review_score) if review_score else 0
+
+        print({
+            1: min_price,
+            2: max_price,
+            3: genre,
+            4: author,
+            5: review_score,
+        })
+
+        books_data = []
+        for book in full_books_data:
+            check = True
+            if (max_price != 0 or min_price != 0) and (max_price >= min_price) and (min_price >= 0):
+                if min_price <= float(book['price']) <= max_price:
+                    check = True
+                else:
+                    continue
+
+            if genre != 'all':
+                if genre in book['category']:
+                    check = True
+                else:
+                    continue
+
+            if author != 'all':
+                if author in book['author']:
+                    check = True
+                else:
+                    continue
+            
+            if review_score != 0:
+                score = 3 if book['review_score'] == 5 else (2 if book['review_score'] >= 4 else (1 if book['review_score'] >= 3 else -1))
+                if score == review_score:
+                    check = True
+                else:
+                    continue
+            if check:
+                books_data.append(book)
+
+        print('Filter Function: ')
+        print(books_data[:5])
+        return redirect(url_for('pagination', page_number=1))
+
+        
+
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port=5055)

@@ -12,6 +12,33 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 import mysql.connector
 
+import os
+import google.generativeai as genai
+
+import difflib
+
+os.environ["API_KEY"] = "KEY"
+genai.configure(api_key=os.environ["API_KEY"])
+
+# Create the model
+generation_config = {
+  "temperature": 1,
+  "top_p": 0.95,
+  "top_k": 64,
+  "max_output_tokens": 8192,
+  "response_mime_type": "text/plain",
+}
+
+model = genai.GenerativeModel(
+  model_name="gemini-1.5-flash",
+  generation_config=generation_config,
+)
+
+chat_session = model.start_chat(
+  history=[
+  ]
+)
+
 connection = mysql.connector.connect(
     host='127.0.0.1',
     user='root',
@@ -20,9 +47,10 @@ connection = mysql.connector.connect(
 )
 cur = connection.cursor()
 
+cur.execute("select title, author, category, description, sku from book")
+full_book = cur.fetchall()
 
 class ActionSearchBook(Action):
-
     def name(self) -> Text:
         return "action_search_book"
 
@@ -33,35 +61,33 @@ class ActionSearchBook(Action):
         title = tracker.get_slot('name')
         author = tracker.get_slot('author')
         category = tracker.get_slot('category')
-        check = bool(tracker.get_slot('check'))
 
-        print((title, author, category))
+        if title is not None:
+            book_title = [book[0] for book in full_book]
+            search_result = difflib.get_close_matches(title, book_title, n=5, cutoff=0.6)
+            book_chosen = random.choice(search_result) if len(search_result) > 0 else None
+            if book_chosen:
+                dispatcher.utter_message(text=f"Đây là cuốn sách {book_chosen[0]} mà tôi tìm được.")
+                dispatcher.utter_message(text=f"Link sản phẩm: /{book_chosen[-1]}")
+                return []
 
-        if title != '':
-            cur.execute(f'select * from book where title="{title}";')
-            book_finded = cur.fetchone()
+        if author is not None:
+            book_by_author = [book for book in full_book if author.lower() in book[1].lower()]
+            book_chosen = random.choice(book_by_author) if len(book_by_author) else None
+            if book_chosen:
+                dispatcher.utter_message(text=f"Đây là cuốn sách {book_chosen[0]} của tác giả {author}")
+                dispatcher.utter_message(text=f"Link sản phẩm: /{book_chosen[-1]}")
+                return []
 
-            if book_finded:
-                dispatcher.utter_message(
-                    text=f"Bạn đang tìm cuốn sách {book_finded['title']} của tác giả {book_finded['author']}, nó thuộc thể loại {book_finded['category']}. Dưới đây là liên kết đến sản phẩm:\n <domain_name>/{book_finded['sku']}")
-            else:
-                dispatcher.utter_message(text="Có vẻ trong cửa hàng không có sách bạn muốn tìm?")
-        elif title == '' or not check:
-            sql = f'select * from book where '
+        if category is not None:
+            book_by_category = [book for book in full_book if category.lower() in book[2].lower()]
+            book_chosen = random.choice(book_by_category) if len(book_by_category) else None
+            if book_chosen:
+                dispatcher.utter_message(text=f"Đây là cuốn sách {book_chosen[0]} thuộc thể loại {category}")
+                dispatcher.utter_message(text=f"Link sản phẩm: /{book_chosen[-1]}")
+                return []
 
-            if author and not category:
-                sql += f'author="{author}"'
-            elif category and not author:
-                sql += f'category="{category}"'
-            elif author and category:
-                sql += f'author="{author}" or category="{category}"'
-
-            cur.execute(sql + ';')
-            book_data = cur.fetchall()
-            choice = random.choice(book_data)
-            dispatcher.utter_message(text=f"Tôi đề cử cuốn sách {choice['title']}: <domain_name>/{choice['sku']}")
-        else:
-            dispatcher.utter_message(text="Có vẻ thông tin bạn đưa ra chưa đủ hoặc khó nhận diện, xin hãy thử lại!")
+        dispatcher.utter_message(text="Có vẻ trong cửa hàng không có sách bạn muốn tìm, bạn có thể thử các cuốn sách khác!")
 
         return []
 
@@ -76,31 +102,11 @@ class ActionInstructBook(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         title = tracker.get_slot('name')
 
-        print(title)
+        if title is not None:
+            response = chat_session.send_message(f"Tóm tắt nội dung sơ lược của cuốn sách {title} trong một đoạn văn")
+            dispatcher.utter_message(text=response.text)
+            return []
 
-        dispatcher.utter_message(text=f"Nội dung của {title}")
-
-        return []
-
-class ActionFindBookByName(Action):
-
-    def name(self) -> Text:
-        return "action_find_book_by_name"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        title = tracker.get_slot('name')
-
-        if title != '':
-            sql = f"select sku from book where title='{title}'"
-            cur.execute(sql)
-
-            sku = cur.fetchall()
-
-            if len(sku) > 0:
-                dispatcher.utter_message(text=f'Đây là quyển sách bạn muốn tìm kiếm: /{random.choice(sku)}')
-            else:
-                dispatcher.utter_message(text='Có vẻ như cuốn sách này không tồn tại trong cửa hàng, hoặc bạn có thể đã đưa sai thông tin?')
+        dispatcher.utter_message(text="Có vẻ chúng tôi không tìm thấy cuốn sách mà bạn đề cập tới.")
 
         return []

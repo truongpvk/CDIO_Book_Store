@@ -17,9 +17,16 @@ nlu:
     - Bai
     - Bái bai
 
+- intent: find_book
+  examples: |
+    - Tôi muốn tìm sách
+    - Tìm kiếm sách
+    - Đưa ra đề nghị cho tôi về sách
+
 - intent: find_by_title
   examples: |
-    - Bạn có [Harry Potter](book_title) không?
+    - Bạn có [Bảng chữ cái](book_title) không?
+    - Bạn có [Bảng tuần hoàn hóa học](book_title) không?
     - Trong này có bán [Tôi thấy hoa vàng trên cỏ xanh](book_title) không?
     - Cửa hàng có bán cuốn sách nào tên là [Harry Potter](book_title) không?
     - Tôi muốn tìm cuốn sách có tên là [Đắc Nhân Tâm](book_title).
@@ -27,6 +34,11 @@ nlu:
     - Tôi đang tìm cuốn sách tên là [Nhà Giả Kim](book_title).
     - Bạn có biết cuốn sách nào có tên [Sapiens](book_title) không?
     - Tôi muốn mua sách [Đời ngắn đừng ngủ dài](book_title).
+    - Tìm kiếm sách [Harry Potter](book_title)
+    - Tìm [Conan](book_title)
+    - Tìm kiếm [Doraemon](book_title)
+    - [Harry Potter](book_title)
+    
 
 - intent: find_by_genre
   examples: |
@@ -36,6 +48,8 @@ nlu:
     - Có thể gợi ý cho tôi sách thuộc thể loại [khoa học viễn tưởng](genre) được không?
     - Tôi muốn tìm sách [tâm lý](genre).
     - Bạn có biết cuốn sách nào thuộc thể loại [hài hước](genre) không?
+    - Sách thể loại [Kinh dị](genre)
+    - Sách [Đời thường](genre)
 
 - intent: find_by_author
   examples: |
@@ -86,3 +100,5 @@ nlu:
     - Nội dung của cuốn sách [Nhà Giả Kim](book_title) là gì?
     - Tôi muốn biết về nội dung của cuốn [Sapiens](book_title).
     - Có ai biết cuốn sách [Đời ngắn đừng ngủ dài](book_title) nói về cái gì không?
+    - Nội dung của [Harry Potter](book_title) là gì?
+    - [Bảng Chữ Cái] nói về cái gì?

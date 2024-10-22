@@ -9,6 +9,7 @@ intents:
   - ask_content
   - ignore_book
   - agree_book
+  - find_book
 
 entities:
   - book_title
@@ -16,11 +17,6 @@ entities:
   - author
 
 slots:
-  check:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: custom
   name:
     type: text
     influence_conversation: true
@@ -52,18 +48,18 @@ responses:
   utter_goodbye:
     - text: "Tạm biệt"
 
-  utter_find:
-    - text: "Tôi đang tìm kiếm, xin đợi một chút nhé!"
-
-  utter_ask_refind:
-    - text: "Đây có phải cuốn sách bạn muốn?"
-
   utter_ask_name:
-    - text: "Tên sách mà bạn muốn tìm là gì?"
+    - text: "Bạn muốn tìm sách nào?"
+
+  utter_ask_author:
+    - text: "Sách bạn muốn tìm do tác giả nào sáng tác?"
+
+  utter_ask_category:
+    - text: "Cuốn sách đó thuộc thể loại nào?"
+
 actions:
   - action_search_book
   - action_instruct_book
-  - action_find_book_by_name
 
 session_config:
   session_expiration_time: 60
