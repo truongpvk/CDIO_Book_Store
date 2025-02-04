@@ -59,16 +59,6 @@ nlu:
     - Tôi muốn tìm cuốn sách viết bởi [George Orwell](author).
     - Bạn có thể gợi ý cho tôi một cuốn sách của tác giả [Dan Brown](author) không?
 
-- intent: find_by_multiple
-  examples: |
-    - Tìm sách [Harry Potter](book_name) của tác giả [J.K. Rowling](author)
-    - Có cuốn sách [The Hobbit](book_name) của [J.R.R. Tolkien](author) không?
-    - Tìm sách tên [1984](book_name) của tác giả [George Orwell](author)
-    - Tôi muốn tìm sách [The Shining](book_name) của [Stephen King](author)
-    - Bạn có sách [Sống mòn](book_name) của [Nam Cao](author) không?
-    - Có cuốn sách nào tên [Dế Mèn phiêu lưu ký](book_name) của [Tô Hoài](author) không?
-    - Tôi muốn tìm cuốn [To Kill a Mockingbird](book_name) của [Harper Lee](author)
-
 - intent: ignore_book
   examples: |
     - Không phải nó
@@ -101,4 +91,4 @@ nlu:
     - Tôi muốn biết về nội dung của cuốn [Sapiens](book_title).
     - Có ai biết cuốn sách [Đời ngắn đừng ngủ dài](book_title) nói về cái gì không?
     - Nội dung của [Harry Potter](book_title) là gì?
-    - [Bảng Chữ Cái] nói về cái gì?
+    - [Bảng Chữ Cái](book_title) nói về cái gì?

@@ -17,7 +17,7 @@ import google.generativeai as genai
 
 import difflib
 
-os.environ["API_KEY"] = "KEY"
+os.environ["API_KEY"] = "AIzaSyAibP8uApGLL3bty5m3F6daQr4HJHR-0Lk"
 genai.configure(api_key=os.environ["API_KEY"])
 
 # Create the model
@@ -63,9 +63,8 @@ class ActionSearchBook(Action):
         category = tracker.get_slot('category')
 
         if title is not None:
-            book_title = [book[0] for book in full_book]
-            search_result = difflib.get_close_matches(title, book_title, n=5, cutoff=0.6)
-            book_chosen = random.choice(search_result) if len(search_result) > 0 else None
+            book_by_title = [book for book in full_book if title.lower() in book[0].lower()]
+            book_chosen = random.choice(book_by_title) if len(book_by_title) > 0 else None
             if book_chosen:
                 dispatcher.utter_message(text=f"Đây là cuốn sách {book_chosen[0]} mà tôi tìm được.")
                 dispatcher.utter_message(text=f"Link sản phẩm: /{book_chosen[-1]}")
