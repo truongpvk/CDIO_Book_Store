@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f44a0653-ad95-4fc4-a194-18faa7a42f41" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Phuong/nhomCDIO/CDIO_Book_Store" beforeDir="false" afterPath="$PROJECT_DIR$/../Phuong/nhomCDIO/CDIO_Book_Store" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.idea/chatbot.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/cache.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp01fjip3f/featurizer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp01fjip3f/memorized_turns.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp0bncd_zr/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp0bncd_zr/featurizer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp0bncd_zr/unexpected_intent_policy.data_example.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp0bncd_zr/unexpected_intent_policy.entity_tag_specs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp0bncd_zr/unexpected_intent_policy.fake_features.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp0bncd_zr/unexpected_intent_policy.label_data.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp0bncd_zr/unexpected_intent_policy.label_quantiles.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp0bncd_zr/unexpected_intent_policy.meta.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp0bncd_zr/unexpected_intent_policy.priority.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp0bncd_zr/unexpected_intent_policy.tf_model.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp0bncd_zr/unexpected_intent_policy.tf_model.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp0kfw4a0g/feature_to_idx_dict.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp0neotq6h/oov_words.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp0neotq6h/vocabularies.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp0nivg51b/feature_to_idx_dict.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp0uh_dbp3/featurizer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp0uh_dbp3/rule_only_data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp0uh_dbp3/rule_policy.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp1g0mk2uf/oov_words.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp1g0mk2uf/vocabularies.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp3kzy4n2z/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp3kzy4n2z/featurizer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp3kzy4n2z/ted_policy.data_example.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp3kzy4n2z/ted_policy.entity_tag_specs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp3kzy4n2z/ted_policy.fake_features.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp3kzy4n2z/ted_policy.label_data.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp3kzy4n2z/ted_policy.meta.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp3kzy4n2z/ted_policy.priority.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp3kzy4n2z/ted_policy.tf_model.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp3kzy4n2z/ted_policy.tf_model.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp4eas8sat/patterns.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp4qkvwmtl/feature_to_idx_dict.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp5nwod27k/oov_words.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp5nwod27k/vocabularies.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp5tgakooj/oov_words.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp5tgakooj/vocabularies.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp5xy4pe9w/oov_words.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp5xy4pe9w/vocabularies.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp6n808e4b/synonyms.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp7me3pyzw/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp7me3pyzw/featurizer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp7me3pyzw/ted_policy.data_example.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp7me3pyzw/ted_policy.entity_tag_specs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp7me3pyzw/ted_policy.fake_features.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp7me3pyzw/ted_policy.label_data.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp7me3pyzw/ted_policy.meta.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp7me3pyzw/ted_policy.priority.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp7me3pyzw/ted_policy.tf_model.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp7me3pyzw/ted_policy.tf_model.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp7vspfli4/oov_words.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp7vspfli4/vocabularies.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp9vi7f7ws/featurizer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp9vi7f7ws/memorized_turns.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp_b5bh4nj/DIETClassifier.data_example.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp_b5bh4nj/DIETClassifier.entity_tag_specs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp_b5bh4nj/DIETClassifier.index_label_id_mapping.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp_b5bh4nj/DIETClassifier.label_data.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp_b5bh4nj/DIETClassifier.sparse_feature_sizes.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp_b5bh4nj/DIETClassifier.tf_model.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp_b5bh4nj/DIETClassifier.tf_model.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp_b5bh4nj/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp_sxt65o2/featurizer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp_sxt65o2/rule_only_data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmp_sxt65o2/rule_policy.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpcbvsys1d/feature_to_idx_dict.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpdmb8vd3w/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpdmb8vd3w/featurizer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpdmb8vd3w/ted_policy.data_example.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpdmb8vd3w/ted_policy.entity_tag_specs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpdmb8vd3w/ted_policy.fake_features.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpdmb8vd3w/ted_policy.label_data.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpdmb8vd3w/ted_policy.meta.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpdmb8vd3w/ted_policy.priority.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpdmb8vd3w/ted_policy.tf_model.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpdmb8vd3w/ted_policy.tf_model.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpgf2oevf0/featurizer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpgf2oevf0/rule_only_data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpgf2oevf0/rule_policy.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpih21zm0j/patterns.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmplbkl0n88/oov_words.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmplbkl0n88/vocabularies.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmplti33z_8/DIETClassifier.data_example.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmplti33z_8/DIETClassifier.entity_tag_specs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmplti33z_8/DIETClassifier.index_label_id_mapping.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmplti33z_8/DIETClassifier.label_data.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmplti33z_8/DIETClassifier.sparse_feature_sizes.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmplti33z_8/DIETClassifier.tf_model.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmplti33z_8/DIETClassifier.tf_model.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmplti33z_8/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpntizxvzq/patterns.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpody6flzh/DIETClassifier.data_example.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpody6flzh/DIETClassifier.entity_tag_specs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpody6flzh/DIETClassifier.index_label_id_mapping.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpody6flzh/DIETClassifier.label_data.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpody6flzh/DIETClassifier.sparse_feature_sizes.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpody6flzh/DIETClassifier.tf_model.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpody6flzh/DIETClassifier.tf_model.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpody6flzh/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpru6vo926/featurizer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpru6vo926/rule_only_data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpru6vo926/rule_policy.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpsi7spwt6/featurizer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpsi7spwt6/memorized_turns.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpslzlwi1o/featurizer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpslzlwi1o/memorized_turns.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmptkwxe9c1/synonyms.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpv3vh0psx/synonyms.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpv_zpwy7u/oov_words.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpv_zpwy7u/vocabularies.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpwa_6aipu/DIETClassifier.data_example.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpwa_6aipu/DIETClassifier.entity_tag_specs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpwa_6aipu/DIETClassifier.index_label_id_mapping.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpwa_6aipu/DIETClassifier.label_data.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpwa_6aipu/DIETClassifier.sparse_feature_sizes.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpwa_6aipu/DIETClassifier.tf_model.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpwa_6aipu/DIETClassifier.tf_model.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpwa_6aipu/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpyic21zg8/synonyms.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/.rasa/cache/tmpzxjsk1fz/patterns.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/actions/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/actions/actions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/config.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/credentials.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/data/nlu.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/data/rules.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/data/stories.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/domain.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/endpoints.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/models/20241005-151016-planar-intersection.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/models/20241005-155853-dynamic-agent.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/models/20241005-160112-violet-wall.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/models/20241005-160955-trusting-jar.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatbot/tests/test_stories.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2mjzMWuBXBNFtSFoErDZCaVWMG4" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="sortKey" value="BY_TIME_DESCENDING" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.app.executor": "Run",
+    "Python.chatbot.executor": "Run",
+    "Python.run.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Truong",
+    "last_opened_file_path": "D:/Codespace-Learning/Learning_School/CDIO/backend/app/chatbot",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-975db3bf15a3-31b6be0877a2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.18034.82" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f44a0653-ad95-4fc4-a194-18faa7a42f41" name="Changes" comment="" />
+      <created>1727604725245</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727604725245</updated>
+    </task>
+    <servers />
+  </component>
+</project>
