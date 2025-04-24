@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/css/homepage.css">
+
+    <!--Import Google Icon Font-->
+    <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"
+    />
+
+    <!--Import materialize.css-->
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="static/css/materialize.min.css"
+    />
+
+    <!--Main css-->
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+        .category-drop{
+            display: none;
+        }
+
+        .category-list:hover .category-drop {
+            display: block;
+        }
+        
+        .category-drop > li {
+            padding: 16px;
+        }
+
+        .category-drop > li:hover {
+            background-color: rgb(231, 225, 225);
+        }
+
+        .redirect-list > li:nth-child(n + 2):hover {
+            text-decoration: underline;
+        }
+        .form-container input {
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .form-post > div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-post > div * {
+            margin-top: 5px;
+        }
+
+        .form-active-btn {
+            padding: 8px 20px;
+            border: 1px solid gray;
+            color: rgb(255, 241, 241);
+            background-color: rgb(55, 55, 235);
+            border-radius: 20px;
+        }
+
+        .form-active-btn:active {
+            background-color: rgb(0, 0, 134);
+        }
+
+        .form-container-x {
+            background-color: rgb(0, 0, 0, 0.5);
+        }
+    </style>
+    <script src="../static/js/searchbar_input.js"></script>
+    <script src="../static/js/sort_filter.js"></script>
+    <script src="../static/js/form_reset.js"></script>
+    <script>
+        window.onload = function() {
+            var selectedTag = document.getElementById('sort-book');
+            selectedTag.onchange = function() {
+                sort();
+            };
+        }
+    </script>
+    
+    
+
+</head>
+<body class="bg-white font-sans text-sm max-h-max">
+    <!-- Login Form -->
+    {% if login_process %}
+    <div class="form-container-x login-form-container-x fixed w-full h-full z-50 flex justify-center items-center" style="display: flex;">
+    {% else %}
+    <div class="form-container-x login-form-container-x fixed w-full h-full z-50 flex justify-center items-center" style="display: none;">
+    {% endif %}
+        <div class="form-container border bg-white border-gray-200 p-8 shadow-lg rounded-lg relative" style="min-width: 25%;">
+            <div class="close-btn absolute" style="right: 15px; top: 15px; font-size: 25px;">
+                <button class="close-btn-x"><i class="bi bi-x-circle"></i></button>
+            </div>
+            <form action="{{url_for('user_login')}}" class="login-form flex flex-col space-y-5" method="post">
+
+                {% if message %}
+                <div class="p-5 border border-gray-300 rounded-lg text-white" style="background-color: rgb(249, 125, 125); margin-top: 10px;">
+                    <h1>{{message}}</h1>
+                </div>
+                {% endif %}
+                
+
+                <h1 style="font-size: 20px;"><b>Đăng nhập</b></h1>
+                <div class="form-post flex flex-col space-y-5">
+                    <div class="username-post">
+                        <label for="username">Tên đăng nhập</label>
+                        <input type="text" name="username" id="login-username">
+                    </div>
+                    
+                    <div class="password-post">
+                        <div class="password-x flex justify-between">
+                            <label for="password">Mật khẩu</label>
+                            <button class="forgot-password-x" style="font-size: small; font-weight: lighter;">Quên mật khẩu?</button>
+                        </div>
+                        <input type="password" name="password" id="login-password">
+                    </div>
+                </div>
+                <div class="action-button flex justify-between items-center">
+                    <button class="signup-redirect" style="font-size: small; font-weight: lighter;">Chưa có tài khoản?</button>
+                    <button class="login-btn form-active-btn">Đăng nhập</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    {% if signup_process %}
+    <div class="form-container-x signup-form-container-x fixed w-full h-full z-50 flex justify-center items-center" style="display: flex;">
+    {% else %}
+    <div class="form-container-x signup-form-container-x fixed w-full h-full z-50 flex justify-center items-center" style="display: none;">
+    {% endif %}
+    <!-- Signup Form -->
+        <div class="form-container border bg-white border-gray-200 p-8 shadow-lg rounded-lg relative" style="min-width: 25%;">
+            <div class="close-btn absolute" style="right: 15px; top: 15px; font-size: 25px;">
+                <button class="close-btn-x"><i class="bi bi-x-circle"></i></button>
+            </div>
+            <form action="{{url_for('user_signup')}}" class="signup-form flex flex-col space-y-5" method="post">
+
+                {% if message_signup %}
+                <div class="p-5 border border-gray-300 rounded-lg text-white" style="background-color: rgb(249, 125, 125); margin-top: 10px;">
+                    <h1>{{message_signup}}</h1>
+                </div>
+                {% endif %}
+
+                <h1 style="font-size: 20px;"><b>Đăng ký</b></h1>
+                <div class="form-post flex flex-col space-y-5">
+                    <div class="username-post">
+                        <label for="username">Tên đăng nhập</label>
+                        <input type="text" name="username" id="username">
+                    </div>
+                    
+                    <div class="email-post">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email">
+                    </div>
+
+                    <div class="password-post">
+                        <label for="password">Mật khẩu</label>
+                        <input type="password" name="password" id="password">
+                    </div>
+
+                    <div class="repassword-post">
+                        <label for="repassword">Nhập lại mật khẩu</label>
+                        <input type="password" name="repassword" id="repassword">
+                    </div>
+                </div>
+                <div class="action-button flex justify-between items-center">
+                    <button class="login-redirect" style="font-size: small; font-weight: lighter;">Đã có tài khoản?</button>
+                    <button class="signup-btn form-active-btn">Đăng ký</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Nav Bar -->
+    <nav class="navigation-bar bg-white p-6 px-10 w-full border border-b-2 border-gray">
+        <div class="navigation-items flex items-center justify-between">
+            <div class="category-list relative">
+                <a href="#"><b>TRANG CHỦ</b></a>
+            </div>
+            <div class="search-and-redirect flex justify-between items-center gap-x-10 z-0">
+                <div class="search-bar flex items-center relative">
+                    <input 
+                    type="text" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    id="search-bar"
+                    placeholder="Tìm kiếm"
+                    style="min-width: 400px;"
+                    onkeypress="search(event)"
+                    >
+                    <i class="bi bi-search absolute right-4"></i>
+                </div>
+                <div class="redirect-bar">
+                    <ul class="redirect-list flex justify-between gap-x-10 items-center">
+                        <li>
+                            <!-- Giỏ hàng -->
+                            <a href="#"><i class="bi bi-cart" style="font-size: 20px;"></i></a>
+                        </li>
+                        <li>
+                            <a href="#">THÔNG BÁO</a>
+                        </li>
+                        <li>
+                            <a href="#">NGÔN NGỮ</a>
+                        </li>
+                        <li>
+                            <a href="#">KÊNH NGƯỜI BÁN</a>
+                        </li>
+                        <li>
+                            <a href="#">HỖ TRỢ</a>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+            {% if username %}
+            <div class="user-info-and-signout pr-20">
+                <div class="relative">
+                    <i class="user-face bi bi-person-circle" style="font-size: 40px; cursor: pointer;"></i>
+                    <div class=" bg-white shadow-md absolute z-40 rounded-lg" style="min-width: 200px; top: 50px; left: -80px;">
+                        <div class="user-info-tab flex flex-col space-y-5 border-gray-200 border p-5" style="display: none;">
+                            <span>{{username}}</span>
+                            <span>Số lượt mua: 242</span>
+                            <button type="submit" class="border border-gray-200 rounded-lg" style="border-width: 0.5px;">
+                                <a href="/logout">Đăng xuất</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="login-and-register flex justify-between items-center space-x-5">
+                <div class="login-button p-3 rounded-full border border-black" style="cursor: pointer;">
+                    <a href="#" class="login-button-submit"><button>Đăng nhập</button></a>
+                </div>
+                <div class="register-button py-3 px-5 rounded-full bg-black text-white" style="cursor: pointer;">
+                    <a href="#" class="register-buttion-submit"><button>Đăng ký</button></a>
+                </div>
+            </div>
+            {% endif %}            
+        </div>
+    </nav>
+
+    <!-- User Tab -->
+    <script>
+        const button = document.getElementsByClassName("user-face")[0];
+        const window_tab = document.getElementsByClassName("user-info-tab")[0];
+        button.addEventListener("click", function() {
+            console.log("Button is clicked!");
+            console.log(window_tab.style.display);
+            if (window_tab.style.display == "flex") {
+                window_tab.style.display = "none";
+            } else {
+                window_tab.style.display = "flex";
+                console.log(window_tab.style.display);
+            }
+        });
+    </script>
+
+    <!-- Login / Signup -->
+    <script>
+        const login_button = document.getElementsByClassName("login-button")[0];
+        const signup_button = document.getElementsByClassName("register-button")[0];
+        const login_form = document.getElementsByClassName("login-form-container-x")[0];
+        const signup_form = document.getElementsByClassName("signup-form-container-x")[0];
+        const close_button = document.getElementsByClassName("close-btn-x");
+
+        login_button.addEventListener("click", function(){
+            login_form.style.display = "flex";
+        });
+
+        signup_button.addEventListener("click", function(){
+            signup_form.style.display = "flex";
+        });
+
+        close_button[0].addEventListener("click", function() {
+            login_form.style.display = "none";
+        });
+        close_button[1].addEventListener("click", function() {
+            signup_form.style.display = "none";
+        });
+    </script>
+
+    <!-- Event Bar -->
+    <nav class="event-bar bg-white px-10 w-full border border-b-2 border-gray">
+        <ul class="event-list flex py-5 justify-between items-center px-8">
+            <li class="flex justify-between items-center space-x-3">
+                <a href="#"><span>Sản phẩm Freeship</span></a>
+                <i class="bi bi-truck" style="font-size: 25px;"></i>
+            </li>
+            <li class="flex justify-between items-center space-x-3">
+                <a href="#"><span>Top Review</span></a>
+            </li>
+            <li class="flex justify-between items-center space-x-3">
+                <a href="#"><span>Top bán chạy</span></a>
+            </li>
+            <li class="flex justify-between items-center space-x-3">
+                <a href="#"><span>Săn Voucher</span></a>
+                <i class="bi bi-ticket-perforated" style="font-size: 25px;"></i>
+            </li>
+            <li class="flex justify-between items-center space-x-3">
+                <a href="#"><span>Đồng giá 29k</span></a>
+                <i class="bi bi-journal-text" style="font-size: 25px;"></i>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="p-8 w-full shadow-lg">
+        <article class="flex justify-between space-x-8 text-md p-5">
+            <form action="/filter" id="filterForm_x" method="post" class="filter-bar border-r border-r-gray-200 space-y-5 px-5 py-6" style="max-width: 300px;" >
+                <h1 style="font-size: 20px;"><b>Bộ lọc tìm kiếm</b></h1>
+                <div class="filter-items filter-price flex flex-col">
+                    <label for="price-range">Giá (VNĐ):</label>
+                    <div class="price-range space-y-2 flex flex-col items-center" id="price-range" on>
+                        <input type="text" name="min-price" id="min-price" placeholder="Giá thấp nhất">
+                        <input type="text" name="max-price" id="max-price" placeholder="Giá cao nhất">
+                    </div>
+                </div>
+                <div class="filter-items filter-category flex flex-col">
+                    <label for="category">Thể loại:</label>
+                    <select name="category" id="category" style="min-width: 70px; max-width: 166px;">
+                        <option value="all">Tất cả</option>
+
+                        {% for g in genre %}
+                        <option value="{{g}}">{{g}}</option>
+                        {% endfor %}
+
+                    </select>
+                </div>
+                <div class="filter-items filter-author flex flex-col">
+                    <label for="author">Tác giả:</label>
+                    <select name="author" id="author" style="min-width: 70px; max-width: 166px;">
+                        <option value="all">Tất cả</option>
+                        {% for a in author %}
+                        <option value="{{a}}">{{a}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="filter-items filter-review flex flex-col">
+                    <label class="filter-review pb-3" style="font-size: 15px;">Đánh giá:</label>
+                    <div>
+                        <input type="radio" name="review" id="review-full" value="1">
+                        <label for="review-full">5 sao</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="review" id="review-medium" value="2">
+                        <label for="review-medium">4 sao trở lên</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="review" id="review-low" value="3">
+                        <label for="review-low">3 sao trở lên</label>
+                    </div>
+                </div>
+                <div class="filter-button flex justify-between items-center">
+                    <button class="bg-blue-600 text-white text-primary-foreground hover:bg-blue-800 rounded-lg px-4 py-2 mr-2" type="submit">Lọc</button>
+                    <button class="rounded-lg px-4 py-2 mr-2 hover:bg-gray-100" type="reset" id="resetButton">Xóa bộ lọc</button>
+                </div>
+
+            </form>
+            <div class="book-and-sort space-y-10 px-5 py-4">
+                <div class="sort-option-box flex justify-between items-center">
+                    <span style="font-size: 20px;"><b>Sản phẩm đang bán</b></span>
+                    <select name="sort" id="sort-book" style="padding: 8px; border: 1px solid gray; border-radius: 10px;">
+                        <option value="1">Giá (từ thấp đến cao)</option>
+                        <option value="2">Giá (từ cao đến thấp)</option>
+                        <option value="3">Tên sách (A - Z)</option>
+                        <option value="4">Tên sách (Z - A)</option>
+                    </select>
+                    
+                    <script>
+                        const selectedTag = document.getElementById('sort-book');
+                        const saved = localStorage.getItem('bookSort');
+                        if (saved) {
+                            selectedTag.value = saved;
+                        }
+                
+                        selectedTag.addEventListener('change', function() {
+                            localStorage.setItem('bookSort', selectElement.value);
+                        });
+                    </script>
+
+                </div>
+                <div class="books-container" style="flex-grow: 4;">
+                    <div class="book-grid-container">
+
+                        {% for book in book_data %}
+                        <div class="books-item border border-gray-300 rounded-lg p-3 flex flex-col justify-between items-center">
+                            <a href="{{url_for('product_page', sku=book['sku'])}}">
+                                <img class="book-cover" src="../static/resources/{{book['cover']}}" alt="Bìa sách" style="max-width: 140px; max-height: 218px">
+                            </a>
+                            <div class="book-info flex flex-col" style="padding: 8px;">
+                                <a href="#">
+                                    <p class="book-name limited-text" style="font-size: 16px; font-weight: 500;">{{book['title']}}</p>
+                                </a>
+                                <span class="book-author limited-text" style="font-size: 10px; font-weight: 100;">{{book['author']}}</span>
+                                <span class="book-price" style="font-weight: 700; color: red;">{{book['price']}} đ</span>
+                                <span class="book-score">
+                                    {% if book['review_score'] > 0 %}
+                                        {% for i in range(book['review_score']) %}
+                                        <i class="bi bi-star-fill" style="color: rgb(176, 176, 2);"></i>
+                                        {% endfor %}
+                                    {% else %}
+                                        <i class="bi bi-star"></i>
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </article>
+        <div class="pagination-bar space-x-8 flex justify-center items-center">
+            {% if page_number > 1 %}
+            <a href="{{url_for('pagination', page_number=page_number - 1)}}"><i class="bi bi-caret-left-fill" style="cursor: pointer;"></i></a>
+            {% endif %}
+            {% if max_page - page_number >= 4 %}
+                <span class="border border-gray-200 px-2 py-1 rounded-lg bg-gray-200"><a href="{{url_for('pagination', page_number=page_number)}}">{{page_number}}</a></span>
+                <span><a href="{{url_for('pagination', page_number=page_number + 1)}}">{{page_number + 1}}</a></span>
+                <span><a href="#">...</a></span>
+                <span><a href="{{url_for('pagination', page_number=max_page - 1)}}">{{max_page - 1}}</a></span>
+                <span><a href="{{url_for('pagination', page_number=max_page)}}">{{max_page}}</a></span>
+            {% else %}
+                {% if page_number == max_page - 3 %}
+                <span class="border border-gray-200 px-2 py-1 rounded-lg bg-gray-200"><a href="{{url_for('pagination', page_number=max_page - 3)}}">{{max_page - 3}}</a></span>
+                {% else %}
+                <span><a href="{{url_for('pagination', page_number=max_page - 3)}}">{{max_page - 3}}</a></span>
+                {% endif %}
+            
+                {% if page_number == max_page - 2 %}
+                <span class="border border-gray-200 px-2 py-1 rounded-lg bg-gray-200"><a href="{{url_for('pagination', page_number=max_page - 2)}}">{{max_page - 2}}</a></span>
+                {% else %}
+                <span><a href="{{url_for('pagination', page_number=max_page - 2)}}">{{max_page - 2}}</a></span>
+                {% endif %}
+
+                {% if page_number == max_page - 1 %}
+                <span class="border border-gray-200 px-2 py-1 rounded-lg bg-gray-200"><a href="{{url_for('pagination', page_number=max_page - 1)}}">{{max_page - 1}}</a></span>
+                {% else %}
+                <span><a href="{{url_for('pagination', page_number=max_page - 1)}}">{{max_page - 1}}</a></span>
+                {% endif %}
+
+                {% if page_number == max_page %}
+                <span class="border border-gray-200 px-2 py-1 rounded-lg bg-gray-200"><a href="{{url_for('pagination', page_number=max_page)}}">{{max_page}}</a></span>
+                {% else %}
+                <span><a href="{{url_for('pagination', page_number=max_page)}}">{{max_page}}</a></span>
+                {% endif %}
+            {% endif %}
+            {% if page_number < max_page %}
+            <a href="{{url_for('pagination', page_number=page_number + 1)}}"><i class="bi bi-caret-right-fill" style="cursor: pointer;"></i></a>
+            {% endif %}
+            
+        </div>
+    </div>
+    <!--chatbot widget -->
+    <div class="widget">
+        <div class="chat_header">
+          <!--Add the name of the bot here -->
+          <span class="chat_header_title">Sara</span>
+          <span class="dropdown-trigger" href="#" data-target="dropdown1">
+            <i class="material-icons"> more_vert </i>
+          </span>
+
+          <!-- Dropdown menu-->
+          <ul id="dropdown1" class="dropdown-content">
+            <li><a href="#" id="clear">Clear</a></li>
+            <li><a href="#" id="restart">Restart</a></li>
+            <li><a href="#" id="close">Close</a></li>
+          </ul>
+        </div>
+
+        <!--Chatbot contents goes here -->
+        <div class="chats" id="chats">
+          <div class="clearfix"></div>
+        </div>
+
+        <!--keypad for user to type the message -->
+        <div class="keypad">
+          <textarea
+            id="userInput"
+            placeholder="Type a message..."
+            class="usrInput"
+          ></textarea>
+          <div id="sendButton">
+            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+
+      <!--bot profile-->
+      <div class="profile_div" id="profile_div">
+        <img class="imgProfile" src="../static/img/botAvatar.png" />
+      </div>
+
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="static/js/lib/materialize.min.js"
+    ></script>
+    <script src="static/js/lib/uuid.min.js"></script>
+    <!--Main Script -->
+    <script type="text/javascript" src="static/js/script.js"></script>
+
+    <!--Chart.js Script -->
+    <script type="text/javascript" src="static/js/lib/chart.min.js"></script>
+    <script type="text/javascript" src="static/js/lib/showdown.min.js"></script>
+</body>
+<footer>
+    <div class="flex flex-wrap justify-between p-4">
+        <div class="border border-dashed p-4 w-full md:w-1/3">
+            <h2 class="font-bold text-lg mb-2">Tác giả nổi bật</h2>
+            <ul class="list-none pl-0">
+                <li>Tô Hoài</li>
+                <li>Trần Hà My</li>
+                <li>Nguyễn Nhật Ánh</li>
+                <li>J.K. Rowling</li>
+                <li>Hồ Anh Thái</li>
+                <li>Nguyễn Trương Quý</li>
+                <li>Đỗ Bích Thúy</li>
+            </ul>
+        </div>
+        <div class="border border-dashed p-4 w-full md:w-1/3">
+            <h2 class="font-bold text-lg mb-2">Shop nổi bật</h2>
+            <ul class="list-none pl-0">
+                <li>Kim Đồng</li>
+                <li>Nhà sách Kim Anh</li>
+                <li>Nhà Nam</li>
+                <li>Minh Châu</li>
+                <li>Tiệm Sách Ước Mơ</li>
+                <li>Bình Minh</li>
+                <li>Sách Giấc Mơ</li>
+            </ul>
+        </div>
+        <div class="border border-dashed p-4 w-full md:w-1/3">
+            <h2 class="font-bold text-lg mb-2">Theo dõi chúng tôi trên</h2>
+            <ul class="list-none pl-0">
+                <li><a href="#" class="text-primary space-x-10 hover:underline"><i class="bi bi-facebook" style="font-size: 15px;"></i> Facebook</a></li>
+                <li><a href="#" class="text-primary hover:underline"><i class="bi bi-instagram" style="font-size: 15px;"></i> Instagram</a></li>
+                <li><a href="#" class="text-primary hover:underline"><i class="bi bi-linkedin"></i> LinkedIn</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+</html>

@@ -1,0 +1,29 @@
+{
+  "lookup": {
+    "rules": {
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"find_book_form\"}}]": "action_find_book_by_name",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"find_book_form\"}}, {\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"action_find_book_by_name\"}, \"slots\": {\"check\": [1.0]}}]": "utter_ask_refind",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"find_book_form\"}}, {\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"action_find_book_by_name\"}, \"slots\": {\"check\": [1.0]}}, {\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"utter_ask_refind\"}, \"slots\": {\"check\": [1.0]}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"slots\": {\"check\": [1.0]}, \"user\": {\"intent\": \"ignore_book\"}}]": "find_book_form",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"slots\": {\"check\": [1.0]}, \"user\": {\"intent\": \"ignore_book\"}}, {\"active_loop\": {\"name\": \"find_book_form\"}, \"prev_action\": {\"action_name\": \"find_book_form\"}, \"slots\": {\"check\": [1.0]}, \"user\": {\"intent\": \"ignore_book\"}}]": "action_listen"
+    },
+    "rule_only_slots": [],
+    "rule_only_loops": [
+      "find_book_form"
+    ],
+    "rules_for_loop_unhappy_path": {
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"find_book_form\"}, \"prev_action\": {\"action_name\": \"find_book_form\"}, \"slots\": {\"check\": [1.0]}, \"user\": {\"intent\": \"ignore_book\"}}]": "do_not_predict_loop_action"
+    },
+    "rules_not_in_stories": [
+      "predicting default action with intent restart",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"find_book_form\"}}, {\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"action_find_book_by_name\"}, \"slots\": {\"check\": [1.0]}}]",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"find_book_form\"}}, {\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"action_find_book_by_name\"}, \"slots\": {\"check\": [1.0]}}, {\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"utter_ask_refind\"}, \"slots\": {\"check\": [1.0]}}]",
+      "predicting default action with intent back",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"slots\": {\"check\": [1.0]}, \"user\": {\"intent\": \"ignore_book\"}}]",
+      "handling active loops and forms - find_book_form",
+      "handling active loops and forms - find_book_form - action_listen",
+      "predicting default action with intent session_start",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"find_book_form\"}}]"
+    ]
+  }
+}

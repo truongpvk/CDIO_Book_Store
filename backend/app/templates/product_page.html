@@ -1,0 +1,750 @@
+<html>
+<head>
+    <title>
+    Sản phẩm
+    </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+            body {
+                font-family: 'Roboto', sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #fff;
+            }
+            
+            /* Navigation Bar */
+            .category-drop{
+                display: none;
+            }
+
+            .category-list:hover .category-drop {
+                display: block;
+            }
+            
+            .category-drop > li {
+                padding: 16px;
+            }
+
+            .category-drop > li:hover {
+                background-color: rgb(231, 225, 225);
+            }
+
+            .redirect-list > li:nth-child(n + 2):hover {
+                text-decoration: underline;
+            }
+            /* Main Content */
+            .main-content {
+                display: flex;
+                padding: 20px;
+            }
+            .main-content .book-image {
+                flex: 1;
+                text-align: center;
+            }
+            .main-content .book-image img {
+                max-width: 100%;
+                height: auto;
+            }
+            .main-content .book-details {
+                flex: 2;
+                padding-left: 20px;
+            }
+            .main-content .book-details h1 {
+                font-size: 24px;
+                margin: 0;
+            }
+            .main-content .book-details .price {
+                font-size: 24px;
+                color: #000;
+                margin: 10px 0;
+            }
+            .main-content .book-details .availability {
+                font-size: 16px;
+                color: #28a745;
+                margin: 10px 0;
+            }
+            .main-content .book-details .options {
+                margin: 10px 0;
+            }
+            .main-content .book-details .options select {
+                padding: 5px;
+                font-size: 16px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+            .main-content .book-details .buy-button {
+                padding: 10px 20px;
+                font-size: 16px;
+                border: none;
+                background-color: #000;
+                color: #fff;
+                border-radius: 4px;
+                margin-top: 10px;
+            }
+            .main-content .book-details .description {
+                margin-top: 20px;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+            .reviews {
+                padding: 20px;
+            }
+            .reviews h2 {
+                font-size: 24px;
+                margin: 0 0 20px 0;
+            }
+            .reviews .review-container {
+                display: flex;
+                justify-content: space-between;
+            }
+            .reviews .review-box {
+                width: 30%;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .reviews .review-box h3 {
+                font-size: 16px;
+                margin: 0 0 10px 0;
+            }
+            .reviews .review-box p {
+                font-size: 14px;
+                color: #555;
+                margin: 0 0 10px 0;
+            }
+            .reviews .review-box .stars {
+                color: #ffcc00;
+            }
+            .related-products {
+                padding: 20px;
+                position: relative;
+            }
+            .related-products h2 {
+                font-size: 24px;
+                margin: 0 0 20px 0;
+            }
+            .related-products .product {
+                display: inline-block;
+                width: 150px;
+                margin-right: 20px;
+                text-align: center;
+            }
+            .related-products .product img {
+                width: 100%;
+                height: auto;
+            }
+            .related-products .product h3 {
+                font-size: 16px;
+                margin: 10px 0 5px 0;
+            }
+            .related-products .product .price {
+                font-size: 14px;
+                color: #000;
+            }
+            .related-products .nav-button {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: #000;
+                color: #fff;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+            }
+            .related-products .nav-button.prev {
+                left: 0;
+            }
+            .related-products .nav-button.next {
+                right: 0;
+            }
+            .footer {
+                padding: 20px;
+                background-color: #f8f8f8;
+                border-top: 1px solid #ddd;
+            }
+            .footer .footer-section {
+                display: inline-block;
+                width: 30%;
+                vertical-align: top;
+            }
+            .footer .footer-section h3 {
+                font-size: 16px;
+                margin: 0 0 10px 0;
+            }
+            .footer .footer-section ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            .footer .footer-section ul li {
+                margin-bottom: 5px;
+            }
+            .footer .footer-section ul li a {
+                text-decoration: none;
+                color: #000;
+                font-size: 14px;
+            }
+            .footer .footer-section ul li a:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+    <style>
+        .form-container input {
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .form-post > div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-post > div * {
+            margin-top: 5px;
+        }
+
+        .form-active-btn {
+            padding: 8px 20px;
+            border: 1px solid gray;
+            color: rgb(255, 241, 241);
+            background-color: rgb(55, 55, 235);
+            border-radius: 20px;
+        }
+
+        .form-active-btn:active {
+            background-color: rgb(0, 0, 134);
+        }
+
+        .form-container-x {
+            display: none;
+            background-color: rgb(0, 0, 0, 0.5);
+        }
+
+    </style>
+    
+    <!-- Login Form -->
+    {% if login_process %}
+    <div class="form-container-x login-form-container-x fixed w-full h-full z-50 flex justify-center items-center" style="display: flex;">
+    {% else %}
+    <div class="form-container-x login-form-container-x fixed w-full h-full z-50 flex justify-center items-center" style="display: none;">
+    {% endif %}
+        <div class="form-container border bg-white border-gray-200 p-8 shadow-lg rounded-lg relative" style="min-width: 25%;">
+            <div class="close-btn absolute" style="right: 15px; top: 15px; font-size: 25px;">
+                <button class="close-btn-x"><i class="bi bi-x-circle"></i></button>
+            </div>
+            <form action="{{url_for('user_login')}}" class="login-form flex flex-col space-y-5" method="post">
+
+                {% if message %}
+                <div class="p-5 border border-gray-300 rounded-lg text-white" style="background-color: rgb(249, 125, 125); margin-top: 10px;">
+                    <h1>{{message}}</h1>
+                </div>
+                {% endif %}
+                
+
+                <h1 style="font-size: 20px;"><b>Đăng nhập</b></h1>
+                <div class="form-post flex flex-col space-y-5">
+                    <div class="username-post">
+                        <label for="username">Tên đăng nhập</label>
+                        <input type="text" name="username" id="login-username">
+                    </div>
+                    
+                    <div class="password-post">
+                        <div class="password-x flex justify-between">
+                            <label for="password">Mật khẩu</label>
+                            <button class="forgot-password-x" style="font-size: small; font-weight: lighter;">Quên mật khẩu?</button>
+                        </div>
+                        <input type="password" name="password" id="login-password">
+                    </div>
+                </div>
+                <div class="action-button flex justify-between items-center">
+                    <button class="signup-redirect" style="font-size: small; font-weight: lighter;">Chưa có tài khoản?</button>
+                    <button class="login-btn form-active-btn">Đăng nhập</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    {% if signup_process %}
+    <div class="form-container-x signup-form-container-x fixed w-full h-full z-50 flex justify-center items-center" style="display: flex;">
+    {% else %}
+    <div class="form-container-x signup-form-container-x fixed w-full h-full z-50 flex justify-center items-center" style="display: none;">
+    {% endif %}
+    <!-- Signup Form -->
+        <div class="form-container border bg-white border-gray-200 p-8 shadow-lg rounded-lg relative" style="min-width: 25%;">
+            <div class="close-btn absolute" style="right: 15px; top: 15px; font-size: 25px;">
+                <button class="close-btn-x"><i class="bi bi-x-circle"></i></button>
+            </div>
+            <form action="{{url_for('user_signup')}}" class="signup-form flex flex-col space-y-5" method="post">
+
+                {% if message_signup %}
+                <div class="p-5 border border-gray-300 rounded-lg text-white" style="background-color: rgb(249, 125, 125); margin-top: 10px;">
+                    <h1>{{message_signup}}</h1>
+                </div>
+                {% endif %}
+
+                <h1 style="font-size: 20px;"><b>Đăng ký</b></h1>
+                <div class="form-post flex flex-col space-y-5">
+                    <div class="username-post">
+                        <label for="username">Tên đăng nhập</label>
+                        <input type="text" name="username" id="username">
+                    </div>
+                    
+                    <div class="email-post">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email">
+                    </div>
+
+                    <div class="password-post">
+                        <label for="password">Mật khẩu</label>
+                        <input type="password" name="password" id="password">
+                    </div>
+
+                    <div class="repassword-post">
+                        <label for="repassword">Nhập lại mật khẩu</label>
+                        <input type="password" name="repassword" id="repassword">
+                    </div>
+                </div>
+                <div class="action-button flex justify-between items-center">
+                    <button class="login-redirect" style="font-size: small; font-weight: lighter;">Đã có tài khoản?</button>
+                    <button class="signup-btn form-active-btn">Đăng ký</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Nav Bar -->
+    <nav class="navigation-bar bg-white p-6 px-10 w-full border border-b-2 border-gray">
+        <div class="navigation-items flex items-center justify-between">
+            <div class="category-list relative">
+                <a href="#"><b>TRANG CHỦ</b></a>
+            </div>
+            <div class="search-and-redirect flex justify-between items-center gap-x-10 z-0">
+                <div class="search-bar flex items-center relative">
+                    <input 
+                    type="text" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    placeholder="Tìm kiếm"
+                    style="min-width: 400px;"
+                    >
+                    <i class="bi bi-search absolute right-4"></i>
+                </div>
+                <div class="redirect-bar">
+                    <ul class="redirect-list flex justify-between gap-x-10 items-center">
+                        <li>
+                            <!-- Giỏ hàng -->
+                            <a href="#"><i class="bi bi-cart" style="font-size: 20px;"></i></a>
+                        </li>
+                        <li>
+                            <a href="#">THÔNG BÁO</a>
+                        </li>
+                        <li>
+                            <a href="#">NGÔN NGỮ</a>
+                        </li>
+                        <li>
+                            <a href="#">KÊNH NGƯỜI BÁN</a>
+                        </li>
+                        <li>
+                            <a href="#">HỖ TRỢ</a>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+            {% if username %}
+            <div class="user-info-and-signout pr-20">
+                <div class="relative">
+                    <i class="user-face bi bi-person-circle" style="font-size: 40px; cursor: pointer;"></i>
+                    <div class=" bg-white shadow-md absolute z-40 rounded-lg" style="min-width: 200px; top: 50px; left: -80px;">
+                        <div class="user-info-tab flex flex-col space-y-5 border-gray-200 border p-5" style="display: none;">
+                            <span>{{username}}</span>
+                            <span>Số lượt mua: 242</span>
+                            <button type="submit" class="border border-gray-200 rounded-lg" style="border-width: 0.5px;">
+                                <a href="/logout">Đăng xuất</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="login-and-register flex justify-between items-center space-x-5">
+                <div class="login-button p-3 rounded-full border border-black" style="cursor: pointer;">
+                    <a href="#" class="login-button-submit"><button>Đăng nhập</button></a>
+                </div>
+                <div class="register-button py-3 px-5 rounded-full bg-black text-white" style="cursor: pointer;">
+                    <a href="#" class="register-buttion-submit"><button>Đăng ký</button></a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- User Tab -->
+    <script>
+        const button = document.getElementsByClassName("user-face")[0];
+        const window_tab = document.getElementsByClassName("user-info-tab")[0];
+        button.addEventListener("click", function() {
+            console.log("Button is clicked!");
+            console.log(window_tab.style.display);
+            if (window_tab.style.display == "flex") {
+                window_tab.style.display = "none";
+            } else {
+                window_tab.style.display = "flex";
+                console.log(window_tab.style.display);
+            }
+        });
+    </script>
+
+    <script>
+        const login_button = document.getElementsByClassName("login-button")[0];
+        const signup_button = document.getElementsByClassName("register-button")[0];
+        const login_form = document.getElementsByClassName("login-form-container-x")[0];
+        const signup_form = document.getElementsByClassName("signup-form-container-x")[0];
+        const close_button = document.getElementsByClassName("close-btn-x");
+
+        login_button.addEventListener("click", function(){
+            login_form.style.display = "flex";
+        });
+
+        signup_button.addEventListener("click", function(){
+            signup_form.style.display = "flex";
+        });
+
+        close_button[0].addEventListener("click", function() {
+            login_form.style.display = "none";
+        });
+        close_button[1].addEventListener("click", function() {
+            signup_form.style.display = "none";
+        });
+    </script>
+
+    <!-- Event Bar -->
+    <nav class="event-bar bg-white px-10 w-full border border-b-2 border-gray">
+        <ul class="event-list flex py-5 justify-between items-center px-8">
+            <li class="flex justify-between items-center space-x-3">
+                <a href="#"><span>Sản phẩm Freeship</span></a>
+                <i class="bi bi-truck" style="font-size: 25px;"></i>
+            </li>
+            <li class="flex justify-between items-center space-x-3">
+                <a href="#"><span>Top Review</span></a>
+            </li>
+            <li class="flex justify-between items-center space-x-3">
+                <a href="#"><span>Top bán chạy</span></a>
+            </li>
+            <li class="flex justify-between items-center space-x-3">
+                <a href="#"><span>Săn Voucher</span></a>
+                <i class="bi bi-ticket-perforated" style="font-size: 25px;"></i>
+            </li>
+            <li class="flex justify-between items-center space-x-3">
+                <a href="#"><span>Đồng giá 29k</span></a>
+                <i class="bi bi-journal-text" style="font-size: 25px;"></i>
+            </li>
+        </ul>
+    </nav>
+    <div class="main-content">
+        <div class="book-image">
+            <img alt="Book cover of 'Tuổi Thơ Dữ Dội' by Phùng Quán" height="450" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-Hh5RPsKhtBPsWCFSiEKnUJ6x/user-8qgiVpCV0U0b7zDjfFInHgjl/img-VbGYhZmv9IeXL4V2SWVGJTRV.png?st=2024-09-24T14%3A22%3A13Z&amp;se=2024-09-24T16%3A22%3A13Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-23T23%3A33%3A47Z&amp;ske=2024-09-24T23%3A33%3A47Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=kZsxKps/y5aR1gHX0E/85KkElMWdl47f7GFESQP%2B5/Q%3D" width="300"/>
+        </div>
+        <div class="book-details">
+            <h1>
+                Tuổi Thơ Dữ Dội - Phùng Quán
+            </h1>
+            <div class="price">
+                50.000 VND
+            </div>
+            <div class="availability">
+                200 lượt bán
+            </div>
+            <div class="options">
+                <label for="delivery">
+                    Đơn vị vận chuyển
+                </label>
+                <select id="delivery">
+                    <option>
+                    Giao hàng tiết kiệm
+                    </option>
+                    <option>
+                    Giao hàng nhanh
+                    </option>
+                </select>
+            </div>
+            <button class="buy-button">
+                Mua hàng
+            </button>
+            <div class="description">
+                <p>
+                Tuổi Thơ Dữ Dội" đã được dịch sang tiếng Anh, với tựa đề "Sad Childhood". Sách được xuất bản lần đầu năm 1988, là một trong những tác phẩm nổi tiếng nhất của nhà văn Phùng Quán. Tác phẩm kể về cuộc sống của những đứa trẻ trong thời kỳ chiến tranh, với những khó khăn, gian khổ, nhưng cũng đầy tình yêu thương và hy vọng. "Tuổi Thơ Dữ Dội" đã được chuyển thể thành phim và nhận được nhiều giải thưởng danh giá. Tác phẩm không chỉ là một câu chuyện về chiến tranh, mà còn là một bài học về tình người, về sự hy sinh và lòng dũng cảm. "Tuổi Thơ Dữ Dội" là một tác phẩm không thể bỏ qua đối với những ai yêu thích văn học Việt Nam.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="reviews">
+    <h2>
+        Đánh giá
+    </h2>
+    <div class="review-container">
+        <div class="review-box">
+        <h3>
+        Sản phẩm
+        </h3>
+        <p>
+        Sách hay
+        </p>
+        <p>
+        Nguyễn Hùng - 20/04/2024
+        </p>
+        <div class="stars">
+        <i class="fas fa-star">
+        </i>
+        <i class="fas fa-star">
+        </i>
+        <i class="fas fa-star">
+        </i>
+        <i class="fas fa-star">
+        </i>
+        <i class="fas fa-star">
+        </i>
+        </div>
+        </div>
+        <div class="review-box">
+        <h3>
+        Sản phẩm
+        </h3>
+        <p>
+        Đóng gói chu đáo
+        </p>
+        <p>
+        Nhà Bán - 20/04/2024
+        </p>
+        <div class="stars">
+        <i class="fas fa-star">
+        </i>
+        <i class="fas fa-star">
+        </i>
+        <i class="fas fa-star">
+        </i>
+        <i class="fas fa-star">
+        </i>
+        <i class="fas fa-star">
+        </i>
+        </div>
+        </div>
+        <div class="review-box">
+        <h3>
+        Sản phẩm
+        </h3>
+        <p>
+        Giao hàng nhanh, sách không bị hư
+        </p>
+        <p>
+        Nhà Bán - 20/04/2024
+        </p>
+        <div class="stars">
+        <i class="fas fa-star">
+        </i>
+        <i class="fas fa-star">
+        </i>
+        <i class="fas fa-star">
+        </i>
+        <i class="fas fa-star">
+        </i>
+        <i class="fas fa-star">
+        </i>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="related-products">
+    <h2>
+        Sản phẩm liên quan
+    </h2>
+    <button class="nav-button prev">
+        <i class="fas fa-chevron-left">
+        </i>
+    </button>
+    <div class="product-container">
+        <div class="product">
+        <img alt="Book cover of 'Sống Chậm'" height="200" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-Hh5RPsKhtBPsWCFSiEKnUJ6x/user-8qgiVpCV0U0b7zDjfFInHgjl/img-kKFFqrXeWQvMAs5HQBefxyxQ.png?st=2024-09-24T14%3A22%3A10Z&amp;se=2024-09-24T16%3A22%3A10Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-24T01%3A12%3A08Z&amp;ske=2024-09-25T01%3A12%3A08Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=TBIXAK3Mtd%2BnQ8wryRkoTGvf/4gx/R%2BH/jqJV3gw5nI%3D" width="150"/>
+        <h3>
+        Sống Chậm
+        </h3>
+        <div class="price">
+        10.000 VND <i class="fas fa-shopping-cart"></i>
+        </div>
+        </div>
+        <div class="product">
+        <img alt="Book cover of 'Quà Mẹ Siêu Thị'" height="200" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-Hh5RPsKhtBPsWCFSiEKnUJ6x/user-8qgiVpCV0U0b7zDjfFInHgjl/img-UdyGyGLATm9sONaso6QPNDuA.png?st=2024-09-24T14%3A22%3A20Z&amp;se=2024-09-24T16%3A22%3A20Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-23T23%3A21%3A37Z&amp;ske=2024-09-24T23%3A21%3A37Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=8bv8oHgxIRiyVZCF6fPdX%2Bxy3YvMx2bn2SI7FyCrYnE%3D" width="150"/>
+        <h3>
+        Quà Mẹ Siêu Thị
+        </h3>
+        <div class="price">
+        41.900 VND <i class="fas fa-shopping-cart"></i>
+        </div>
+        </div>
+        <div class="product">
+        <img alt="Book cover of 'Việc Nhà Mẹ Chờ'" height="200" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-Hh5RPsKhtBPsWCFSiEKnUJ6x/user-8qgiVpCV0U0b7zDjfFInHgjl/img-NIove38G1Ioy1CsITVrAUiId.png?st=2024-09-24T14%3A22%3A14Z&amp;se=2024-09-24T16%3A22%3A14Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-23T23%3A11%3A52Z&amp;ske=2024-09-24T23%3A11%3A52Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=mTme/rbcBYR2ULpz9JKzfT3QV8mSvefmY2Bdy7jl0mw%3D" width="150"/>
+        <h3>
+        Việc Nhà Mẹ Chờ
+        </h3>
+        <div class="price">
+        120.000 VND <i class="fas fa-shopping-cart"></i>
+        </div>
+        </div>
+        <div class="product">
+        <img alt="Book cover of 'Mùi Thế Này'" height="200" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-Hh5RPsKhtBPsWCFSiEKnUJ6x/user-8qgiVpCV0U0b7zDjfFInHgjl/img-kIaDR4QhAdVy2bJNhIsjXaBn.png?st=2024-09-24T14%3A22%3A10Z&amp;se=2024-09-24T16%3A22%3A10Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-23T23%3A26%3A21Z&amp;ske=2024-09-24T23%3A26%3A21Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=UHyLMGYHF1%2Bg5DtZ%2BM4kdeTC4E/3H9L21Ls6akTtVJ0%3D" width="150"/>
+        <h3>
+        Mùi Thế Này
+        </h3>
+        <div class="price">
+        45.800 VND <i class="fas fa-shopping-cart"></i>
+        </div>
+        </div>
+        <div class="product">
+        <img alt="Book cover of 'Chú Chim Tí Hon'" height="200" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-Hh5RPsKhtBPsWCFSiEKnUJ6x/user-8qgiVpCV0U0b7zDjfFInHgjl/img-NuuxaqMWX4gilqGcbugLTaSQ.png?st=2024-09-24T14%3A22%3A09Z&amp;se=2024-09-24T16%3A22%3A09Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-23T23%3A15%3A05Z&amp;ske=2024-09-24T23%3A15%3A05Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=svXhnNkfqp2qj47ECFLktZR83/gBgxltb8TYOXsYXls%3D" width="150"/>
+        <h3>
+        Chú Chim Tí Hon
+        </h3>
+        <div class="price">
+        10.800 VND <i class="fas fa-shopping-cart"></i>
+        </div>
+        </div>
+    </div>
+    <button class="nav-button next">
+        <i class="fas fa-chevron-right">
+        </i>
+    </button>
+    </div>
+
+    <div class="footer">
+    <div class="footer-section">
+        <h3>
+        Tác giả nổi bật
+        </h3>
+        <ul>
+        <li>
+        <a href="#">
+        Tô Hoài
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        Trần Đăng Khoa
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        Nguyễn Nhật Ánh
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        J.K. Rowling
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        Haruki Murakami
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        Nguyễn Trường Quý
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        Bảo Bình Thủy
+        </a>
+        </li>
+        </ul>
+    </div>
+    <div class="footer-section">
+        <h3>
+        Shop nổi bật
+        </h3>
+        <ul>
+        <li>
+        <a href="#">
+        Kim Đồng
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        Nhà Sách Kim Ánh
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        Nhà Sách Minh Khai
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        Nhà Sách Phương Nam
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        Nhà Sách Fahasa
+        </a>
+        </li>
+        </ul>
+    </div>
+    <div class="footer-section">
+        <h3>
+        Theo dõi chúng tôi
+        </h3>
+        <ul>
+        <li>
+        <a href="#">
+        <i class="fas fa-rss"></i> Blog
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        <i class="fab fa-facebook"></i> Facebook
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        <i class="fab fa-instagram"></i> Instagram
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        </li>
+        </ul>
+    </div>
+    </div>
+    <style>
+    .product-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    .footer {
+        text-align: center;
+    }
+    .footer-section {
+        display: inline-block;
+        width: 30%;
+        vertical-align: top;
+        text-align: left;
+    }
+    .nav-button {
+        width: 30px;
+    }
+
+    </style>
+</body>
+</html>

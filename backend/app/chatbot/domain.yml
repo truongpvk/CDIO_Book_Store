@@ -1,0 +1,66 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - find_by_title
+  - find_by_genre
+  - find_by_author
+  - ask_content
+  - ignore_book
+  - agree_book
+  - find_book
+
+entities:
+  - book_title
+  - genre
+  - author
+
+slots:
+  name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: book_title
+  author:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: author
+  category:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: genre
+
+forms:
+  find_book_form:
+    required_slots:
+      - name
+
+responses:
+  utter_greet:
+    - text: "Xin chào"
+
+  utter_goodbye:
+    - text: "Tạm biệt"
+
+  utter_ask_name:
+    - text: "Bạn muốn tìm sách nào?"
+
+  utter_ask_author:
+    - text: "Sách bạn muốn tìm do tác giả nào sáng tác?"
+
+  utter_ask_category:
+    - text: "Cuốn sách đó thuộc thể loại nào?"
+
+actions:
+  - action_search_book
+  - action_instruct_book
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

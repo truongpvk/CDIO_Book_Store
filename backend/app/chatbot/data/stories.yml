@@ -1,0 +1,52 @@
+version: "3.1"
+
+stories:
+
+  - story: happy path
+    steps:
+      - intent: greet
+      - bot: Chào bạn, rất vui lòng được giúp đỡ bạn!
+
+  - story: ending path
+    steps:
+      - intent: goodbye
+      - bot: Tạm biệt, hẹn gặp lại bạn nhé!
+
+  - story: find book by title
+    steps:
+      - intent: find_by_title
+        entities:
+          - book_title
+      - slot_was_set:
+          - name: "{book_title}"
+      - action: action_search_book
+
+
+  - story: find book by author
+    steps:
+      - intent: find_by_author
+        entities:
+          - author
+      - slot_was_set:
+          - author: "{author}"
+      - action: action_search_book
+
+
+  - story: find book by category
+    steps:
+      - intent: find_by_genre
+        entities:
+          - genre
+      - slot_was_set:
+          - category: "{genre}"
+      - action: action_search_book
+
+
+  - story: ask for content
+    steps:
+      - intent: ask_content
+        entities:
+          - book_title
+      - slot_was_set:
+          - name: "{book_title}"
+      - action: action_instruct_book

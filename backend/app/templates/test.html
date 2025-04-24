@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="filterForm" method="POST" action="/filter">
+        <input type="text" name="author" placeholder="Nhập tác giả" />
+        <input type="text" name="genre" placeholder="Nhập thể loại" />
+        <button type="submit">Submit</button>
+        <button type="reset" id="resetButton">Reset</button>
+    </form>
+    
+    <script>
+    document.getElementById('filterForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Ngăn chặn hành vi mặc định của form
+        alert("Form đã được gửi!"); // Hiển thị thông báo
+        // Tiến hành gửi dữ liệu...
+    });
+    
+    document.getElementById('resetButton').addEventListener('click', function(event) {
+        if (confirm("Bạn có chắc chắn muốn đặt lại form không?")) {
+            alert("Form đã được reset!"); // Hiển thị thông báo
+            // Tiến hành gửi giá trị -1 nếu cần...
+        }
+    });
+    </script>
+</body>
+</html>

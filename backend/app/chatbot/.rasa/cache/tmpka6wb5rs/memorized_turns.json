@@ -1,0 +1,15 @@
+{
+  "lookup": {
+    "eJyLrq6NBQAEOAGx": "action_listen",
+    "eJwtytEJgDAMhOFVMkAn6CqlhKqnBDRKGwUp3d2ivt1/fKE2R/XIuDiNJrt6qt9gTRs8/bFKMWi3Z0HuBmpiguIpLNCM6Ei0C/M0i0483Pz+rcUHUoYljQ==": "utter_find",
+    "eJydjMsJgDAQRFvZAlJBWhFZ/IyyoKskG0GCvRs/d8HbzPDmVflwlNeAjZvOZFFP+QmszQxPb5kkGrSwKSIUBmpiguipGqEBtSPRQpinQbTndud7Pz70yQyBr8sfd30CEQBIMQ==": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohPT8/JakytbY2FgAh+hxX": "Tạm biệt, hẹn gặp lại bạn nhé!",
+    "eJx9zUEOgkAMheGrPPcsYEWYc7hTQ2awwSbQIVAMZsLdLY5b3X0v+dNe0l4gTTM9W98pR3FIGa34kRy+Y+BFSaxdF5qtYbGpDn2M9/Ci/ecVpc2y83WtyFcjAh/qai3wOBQaQf9BPWHIFSNkCMSisqTm9Ofz7Q3SGkan": "action_listen",
+    "eJwtymEKgCAMhuGr7ACeYFcRGVoLRjVDVxDi3RPs3/d+PL51B+0q/FBcTLIitDlI48kIfxxSjXXYu3IZhtXEhCuCTznvNOrg4EB0MEPYRFdK7/x7Dx8bAie5": "utter_find",
+    "eJydjV0KgCAQhK+yB/AEXiVk6WeDJVtD1yDEu2fYe9DbfMM3zFCqgXJEOnGclYNYKD2gjDtZeMFzUpLm5kSxOSTKypQsDFMIGzby5AywNE0trCwLTlfv68dHVqWIz+T3gbsBIedMiQ==": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEohvSg1taS2NhYA6dwbhQ==": "Chào bạn, rất vui lòng được giúp đỡ bạn!",
+    "eJx1jsEKgzAQRH9le/eQbekl135GLRJlTQN2lbiRQvDf3djizcsys/MY5pnXCvIUaWlcJ2FkC/knGnYfsvA3Q5iFWNk0U1QmsFqx4CORrKcdQl+FHu86GUNmhLZOSA65griru8CSAgwl76/sQQUiltuaQtCtAx/22E1Hqn88ui6nq14b4eJNlA==": "action_listen",
+    "eJwtymEKgCAMhuGr7ACeYFcRGVaLBjVDZxDi3RPs3/fyPb51B+3O/FBcTZIitDlI48UIf5xSjHXYWjgPw2piwgXBx2pHysGB6CCGsItutLw0j97DB6MoJpE=": "utter_find",
+    "eJydjVEKgDAMQ6/SA+wEu8oYZWrFgnaydYKM3d2J/gv+JeQlcbUZqHuiA8OoHMVCfQRK2MjCa1bOStLZkil1hkRZmbIFF4ouMXkDLB1RCzPLhMOJT9A+DooqJbw7/9b9BVcTSjk=": "action_listen"
+  }
+}
